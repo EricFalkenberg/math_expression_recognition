@@ -10,13 +10,13 @@ kdtree_model = {
 }
 
 ## General Configuration
-dataset_config = {
+arg_dataset = {
     'metavar' : 'f',
     'type'  : str,
     'nargs' : 1,
     'help'  : 'The filename for the csv file that contains the dataset.'
 }
-classes_config = {
+arg_classes = {
     'metavar' : 'c',
     'type' : str,
     'nargs' : '*',
