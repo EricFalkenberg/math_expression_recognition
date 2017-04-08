@@ -1,6 +1,9 @@
-import csv
-import numpy as np
 from config import dataset_meta
+import csv
+import os
+import progressbar
+import numpy as np
+import xml.etree.ElementTree as ET
 
 def load_data(fname):
     with open(fname) as f:
@@ -8,13 +11,38 @@ def load_data(fname):
         X = []
         Y = []
         for row in csvreader:
-            X.append(row[:-1])
-            Y.append(row[-1:])
+            X.append(row[0])
+            Y.append(row[1])
     return X, Y
 
-def retrieve_stroke_data(X, dataset_loc):
-    pass
+def extract_xy_data(string):
+    string = string.split(",")
+    return [[float(j) for j in i.split()][:2] for i in string]
 
-X, Y = load_data('tmp/real-train.csv')
-retrieve_stroke_data(X, dataset_meta['location'])
+def retrieve_stroke_data(X, directory, config):
+    trace_map = {}
+    num_files = len(os.listdir(directory % config['location']))
+    progress = progressbar.ProgressBar(max_value=num_files)
+    curr = 0
+    print "Processing files in %s" % (directory % config['location'])
+    for filename in os.listdir(directory % config['location']):
+        if filename not in config['exclude']:
+            tree = ET.parse((directory+"%s") % (config['location'], filename))
+            root = tree.getroot() 
+            annotations = root.findall(config['xml_name_tag'])       
+            loc = annotations[1].text
+            trace = root.findall(config['xml_trace_tag'])
+            trace_map[loc] = map(extract_xy_data, (stroke.text for stroke in trace))
+        progress.update(curr)
+        curr += 1
+    progress.update(curr)
+    return {i:trace_map[i] for i in X if i in trace_map}
 
+def extract_features(fname):
+    X, Y = load_data(fname)
+    dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
+    for directory in dirs:
+        stroke_data = retrieve_stroke_data(X, directory, dataset_meta) 
+        break # Just for now to speed things up
+
+extract_features("tmp/real-test.csv")

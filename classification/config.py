@@ -26,5 +26,8 @@ arg_classes = {
 
 ## Dataset Configuration
 dataset_meta = {
-    'location' : '../dataset/'
+    'location' : '../dataset',
+    'exclude'  : ['iso_GT.txt', 'junk_GT.txt'],
+    'xml_name_tag' : '{http://www.w3.org/2003/InkML}annotation',
+    'xml_trace_tag' : '{http://www.w3.org/2003/InkML}trace'
 }
