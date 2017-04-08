@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">89_hirata_4772</annotation>
+<trace id="21">
+553 99
+</trace>
+<trace id="22">
+553 99, 552 98, 551 97, 551 98, 550 98, 550 99, 550 100, 551 102, 551 104, 551 107, 551 109, 552 112, 552 115, 552 117, 552 120, 552 122, 552 124, 552 127, 552 128, 552 130, 552 131, 552 132, 552 133, 552 134, 553 135, 554 134
+</trace>
+<trace id="23">
+607 92
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="21"/>
+		<traceView traceDataRef="22"/>
+		<traceView traceDataRef="23"/>
+	</traceGroup>
+</traceGroup>
+</ink>

@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">2011_KAIST_Data2_0_sub_41_33599</annotation>
+<trace id="10">
+15423 4791, 15424 4764, 15426 4738, 15421 4707, 15411 4678, 15404 4652, 15392 4630, 15381 4613, 15366 4599, 15348 4596, 15325 4606, 15298 4632, 15265 4679, 15231 4738, 15172 4869, 15147 4942, 15136 5016, 15135 5076, 15144 5123, 15196 5149, 15230 5143, 15268 5131, 15302 5093, 15334 5046, 15359 4985, 15381 4923, 15398 4873, 15410 4821, 15416 4778, 15421 4745, 15427 4731, 15427 4731, 15442 4789, 15447 4828, 15457 4867, 15470 4908, 15484 4950, 15500 4986, 15513 5013, 15530 5033, 15545 5041, 15563 5037, 15576 5024, 15588 4996
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="10"/>
+	</traceGroup>
+</traceGroup>
+</ink>

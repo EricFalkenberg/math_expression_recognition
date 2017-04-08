@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB2026_65799</annotation>
+<trace id="12">
+388 167 590395, 388 168 590499, 388 169 590507, 388 170 590515, 388 172 590524, 388 174 590533, 388 175 590542, 388 177 590550, 388 179 590559, 388 181 590568, 388 184 590576, 387 186 590585, 387 188 590594, 387 190 590603, 387 194 590611, 387 196 590620, 387 197 590629, 387 199 590643, 387 200 590659, 387 201 590675, 387 202 590691, 387 203 590707, 387 204 590835, 387 205 590859, 387 206 590883, 387 207 590907, 387 208 590947, 387 209 590971, 387 210 590979, 387 211 590987, 386 211 591011, 386 212 591027
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="12"/>
+	</traceGroup>
+</traceGroup>
+</ink>

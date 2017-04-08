@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">109_Frank_995</annotation>
+<trace id="9">
+913 61, 913 59, 895 79, 894 80, 893 80, 892 81, 893 80
+</trace>
+<trace id="10">
+894 92, 895 96, 908 109, 911 102, 914 93, 918 86, 922 79, 926 74, 930 68, 931 66, 933 64, 935 61, 936 59, 936 58, 937 58, 938 58, 939 58, 940 59, 942 59, 945 59, 948 59, 956 59, 960 58, 965 58, 971 57, 976 57, 981 56, 992 55, 997 54, 1001 53, 1005 53, 1008 52, 1011 52, 1013 52, 1015 52, 1016 51
+</trace>
+<trace id="12">
+889 122, 886 122, 902 126, 915 126, 931 125, 937 124, 963 122, 977 121, 997 120, 1013 119, 1022 118, 1025 118, 1028 117, 1032 117, 1034 117, 1035 117, 1034 117, 1033 117, 1031 117
+</trace>
+<trace id="11">
+963 79, 965 78, 946 92, 946 94, 946 97, 947 99, 951 100, 954 99, 957 97, 960 95, 963 90, 964 88, 966 85, 967 83, 967 80, 968 80, 968 79, 968 80, 967 81, 967 82, 967 85, 967 87, 967 89, 967 90, 967 92, 967 93, 968 95, 968 96, 969 96, 970 97, 971 98, 973 98, 974 98, 975 98, 976 98
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="9"/>
+		<traceView traceDataRef="10"/>
+		<traceView traceDataRef="11"/>
+		<traceView traceDataRef="12"/>
+	</traceGroup>
+</traceGroup>
+</ink>

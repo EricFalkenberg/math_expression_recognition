@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">124_alfonso_1930</annotation>
+<trace id="5">
+462 214, 462 213, 470 203, 470 205, 470 206, 469 207, 469 209, 469 211, 469 213, 469 214, 469 216, 470 218, 470 219, 470 221, 470 222, 470 223, 470 224, 470 225, 471 226, 471 227, 470 227, 470 228, 469 228, 468 229, 467 229, 466 229, 464 230, 463 230, 461 230, 460 231, 459 231, 458 231, 457 232, 456 232, 457 232, 458 231, 460 231, 462 231, 464 230, 466 230, 468 230, 471 229, 473 229, 475 229, 477 229, 479 229, 481 229, 482 229, 483 229, 484 229, 485 229
+</trace>
+<trace id="4">
+424 227, 440 227, 441 227, 442 227, 443 227
+</trace>
+<trace id="6">
+414 22, 414 18, 408 41, 409 40, 409 39, 410 38, 411 36, 412 35, 414 33, 416 32, 417 30, 419 28, 421 27, 423 26, 425 25, 426 24, 427 23, 428 22, 429 22, 430 22, 430 23, 430 24, 429 24
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="4"/>
+		<traceView traceDataRef="5"/>
+		<traceView traceDataRef="6"/>
+	</traceGroup>
+</traceGroup>
+</ink>

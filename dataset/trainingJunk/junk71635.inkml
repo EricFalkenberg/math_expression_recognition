@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB3217_71635</annotation>
+<trace id="19">
+380 126 939947, 380 127 939955, 381 129 939965, 382 131 939976, 383 136 939986, 383 139 939996, 383 144 940007, 383 146 940017, 383 149 940027, 383 150 940048, 384 150 940120
+</trace>
+<trace id="18">
+341 163 939113, 342 163 939152, 343 163 939162, 344 163 939172, 345 163 939183, 346 163 939193, 348 163 939203, 349 163 939214, 350 162 939224, 351 162 939234
+</trace>
+<trace id="17">
+340 166 938680, 341 166 938688, 342 166 938699, 343 166 938709, 345 166 938719, 347 166 938729, 349 166 938740, 350 166 938750, 351 166 938760, 352 166 938771, 352 165 938822, 353 165 938843
+</trace>
+<trace id="16">
+312 154 937846, 312 155 937874, 313 157 937885, 315 160 937895, 316 162 937905, 317 166 937916, 317 167 937926, 318 169 937936, 319 170 937946, 319 171 937967, 320 171 938039
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="16"/>
+		<traceView traceDataRef="17"/>
+		<traceView traceDataRef="18"/>
+		<traceView traceDataRef="19"/>
+	</traceGroup>
+</traceGroup>
+</ink>

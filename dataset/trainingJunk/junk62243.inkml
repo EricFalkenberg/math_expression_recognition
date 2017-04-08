@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB1512_62243</annotation>
+<trace id="19">
+743 372, 743 372, 743 372, 743 372, 742 373, 742 373, 742 373, 743 373, 744 373, 745 372, 747 372, 749 372, 752 372, 760 372
+</trace>
+<trace id="18">
+761 354, 761 353, 761 353, 761 353, 762 353, 762 352, 762 352, 762 352, 762 352, 762 353, 761 354, 760 355, 759 357, 757 360, 756 363, 751 376, 750 380, 750 383, 751 384, 753 384, 756 383, 758 382, 760 381, 762 380
+</trace>
+<trace id="20">
+780 377, 780 377, 780 377, 780 377, 780 377, 780 376, 780 375, 780 375, 780 374, 780 373, 780 371, 779 369, 777 369, 776 369, 773 371, 772 374, 771 378, 772 380, 774 381, 777 381, 779 380, 780 379, 780 379, 777 383, 775 387, 772 391, 769 396, 766 399, 765 400, 764 399, 765 396, 767 393, 768 391, 771 388, 775 386, 778 385
+</trace>
+<trace id="17">
+718 372, 718 372, 718 372, 717 372, 717 373, 717 373, 718 373, 719 373, 720 373, 722 373, 724 373, 729 373, 737 372
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="17"/>
+		<traceView traceDataRef="18"/>
+		<traceView traceDataRef="19"/>
+		<traceView traceDataRef="20"/>
+	</traceGroup>
+</traceGroup>
+</ink>

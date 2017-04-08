@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB3012_69986</annotation>
+<trace id="13">
+654 231 908636, 649 227 908743, 648 225 908754, 646 223 908764, 644 221 908775, 642 218 908786, 641 216 908797, 639 214 908807, 638 213 908818, 638 212 908829, 638 211 908840, 637 210 908861
+</trace>
+<trace id="12">
+634 258 908184, 639 252 908270, 641 249 908280, 644 245 908291, 647 241 908302, 651 236 908312, 656 229 908324, 660 223 908334, 663 220 908345, 664 217 908356, 665 216 908366
+</trace>
+<trace id="15">
+727 221 910797, 727 226 910840, 727 228 910851, 727 230 910862, 727 233 910872, 727 235 910883, 727 236 910894, 727 237 910905, 727 238 910915
+</trace>
+<trace id="14">
+696 232 910313, 704 232 910378, 710 232 910388, 715 232 910399, 724 232 910410, 731 232 910421, 740 232 910431, 744 232 910442, 745 232 910453
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="12"/>
+		<traceView traceDataRef="13"/>
+		<traceView traceDataRef="14"/>
+		<traceView traceDataRef="15"/>
+	</traceGroup>
+</traceGroup>
+</ink>

@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB1310_61362</annotation>
+<trace id="5">
+271 384 86799, 271 385 86814, 271 386 86830, 271 387 86830, 271 390 86846, 271 393 86846, 272 396 86861, 273 399 86861, 273 403 86877, 273 406 86877, 273 409 86892, 273 413 86892, 273 416 86908, 273 419 86908, 273 420 86924, 273 422 86924, 273 423 86939
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="5"/>
+	</traceGroup>
+</traceGroup>
+</ink>

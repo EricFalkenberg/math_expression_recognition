@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">124_rosario_2070</annotation>
+<trace id="8">
+673 80, 664 91, 661 96, 660 97, 659 99, 658 101, 657 103, 656 104, 654 106, 654 107, 653 109, 652 110, 651 111, 650 111, 651 111, 651 110, 652 109
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="8"/>
+	</traceGroup>
+</traceGroup>
+</ink>

@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">70_Fabricio_3120</annotation>
+<trace id="13">
+672 247, 672 245, 680 245, 681 246, 681 247, 681 249, 681 250, 681 252, 680 253, 680 255, 679 256, 678 258, 677 259, 676 260, 675 261, 674 262, 673 262, 672 262, 671 262, 670 261, 669 260, 669 259, 670 258, 671 258, 672 258, 673 258, 674 258, 675 258, 676 259, 677 259, 678 260, 679 260, 680 261, 681 262, 682 262, 683 263, 684 263, 685 263, 686 263, 687 262
+</trace>
+<trace id="12">
+643 290, 657 275, 664 270, 665 269, 665 268, 666 267, 667 267, 667 268, 666 269
+</trace>
+<trace id="15">
+727 261, 727 264, 727 287, 727 288, 727 289, 727 290, 727 289, 727 288, 727 287, 727 286
+</trace>
+<trace id="14">
+713 278, 712 278, 726 279, 736 277, 738 277, 739 276, 740 276, 739 276, 738 276, 737 276
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="12"/>
+		<traceView traceDataRef="13"/>
+		<traceView traceDataRef="14"/>
+		<traceView traceDataRef="15"/>
+	</traceGroup>
+</traceGroup>
+</ink>

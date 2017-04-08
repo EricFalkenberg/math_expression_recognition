@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">101_hirata_108</annotation>
+<trace id="19">
+892 93, 892 90, 894 104, 894 107, 896 118, 896 119, 896 120, 897 121, 897 120, 896 119, 896 118, 896 117, 896 116, 895 115, 895 113
+</trace>
+<trace id="20">
+899 92, 900 91, 901 90, 902 92, 905 109, 906 116, 907 118, 907 119, 907 121, 907 122, 908 123, 908 124, 907 123, 907 122, 906 121, 906 120, 905 119, 904 118
+</trace>
+<trace id="21">
+879 93, 875 92, 912 87, 916 87, 919 86, 921 86, 924 86, 925 86, 926 85, 927 85, 928 85
+</trace>
+<trace id="22">
+930 54, 929 54, 945 64, 947 67, 960 89, 961 94, 962 99, 964 110, 964 115, 964 120, 964 124, 963 129, 963 133, 962 136, 961 140, 960 143, 959 145, 958 148, 957 150, 956 152, 955 154, 954 155, 953 157, 952 158, 951 159, 950 159, 949 160, 948 160, 947 159, 947 158
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="19"/>
+		<traceView traceDataRef="20"/>
+		<traceView traceDataRef="21"/>
+		<traceView traceDataRef="22"/>
+	</traceGroup>
+</traceGroup>
+</ink>

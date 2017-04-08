@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">98_fujita_6057</annotation>
+<trace id="3">
+321 91, 320 93, 319 93, 315 93, 314 94, 312 98, 312 100, 312 102, 312 105, 312 107, 313 109, 314 110, 315 111, 316 112, 318 113, 319 112, 321 112, 322 111, 324 110, 326 108, 327 106, 329 104, 330 102, 331 100, 331 98, 331 96, 331 95, 331 93, 329 92, 328 91, 326 90, 324 90, 323 90, 321 90, 319 91, 318 91, 316 93, 315 93
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="3"/>
+	</traceGroup>
+</traceGroup>
+</ink>

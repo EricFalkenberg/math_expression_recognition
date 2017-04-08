@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">116_herbert_1518</annotation>
+<trace id="11">
+489 44, 488 44
+</trace>
+<trace id="10">
+455 62, 453 59, 452 63, 452 66, 456 87, 457 90, 458 93, 459 96, 459 97, 460 99, 459 98, 459 96, 459 94, 459 92, 459 90, 459 87, 459 85, 460 83, 462 81, 464 80, 466 80, 469 81, 472 82, 474 83, 477 84, 480 87, 482 89, 484 92, 485 95, 485 98, 485 101, 484 104, 483 107, 481 109, 479 111, 477 112, 474 113, 471 113, 469 112, 466 112, 464 110, 463 109, 462 108
+</trace>
+<trace id="13">
+521 87, 520 87, 556 86, 558 87, 560 87, 561 87
+</trace>
+<trace id="12">
+489 44, 494 43, 495 43, 496 43, 498 44, 499 44, 500 45, 501 46, 502 47, 502 49, 502 50, 500 53, 499 55, 499 56, 498 57, 498 58, 499 59, 500 59, 502 58, 503 58, 505 58, 507 57
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="10"/>
+		<traceView traceDataRef="11"/>
+		<traceView traceDataRef="12"/>
+		<traceView traceDataRef="13"/>
+	</traceGroup>
+</traceGroup>
+</ink>

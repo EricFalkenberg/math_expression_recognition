@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">96_carlos_5843</annotation>
+<trace id="19">
+897 54, 895 55, 888 75, 887 82, 887 88, 885 98, 885 104, 884 114, 884 117, 885 126, 885 129, 887 135, 887 138, 888 144, 889 147, 891 152, 892 155, 893 159, 894 161, 895 163, 897 166, 899 169, 900 171, 901 172, 902 173, 902 175, 903 176, 904 178, 905 179, 906 180, 906 181, 907 182, 908 182, 908 181
+</trace>
+<trace id="18">
+840 96, 839 95, 842 116, 842 117, 843 118, 843 117, 843 116, 843 113, 842 110, 842 107, 842 104, 842 101, 842 100, 843 98, 844 96, 845 95, 846 94, 847 94, 848 94, 849 95, 850 96, 851 97, 852 99, 853 100, 854 102, 854 104, 855 106, 856 109, 856 110, 856 112, 856 113, 856 115, 857 117, 857 118
+</trace>
+<trace id="20">
+936 81, 935 79, 931 58, 931 57, 930 57, 930 56, 930 57, 930 58, 931 60, 932 64, 933 69, 934 75, 935 81, 935 84, 935 85, 935 86, 936 87, 936 86
+</trace>
+<trace id="17">
+823 95, 823 94, 825 115, 825 116, 825 117, 826 116, 826 115, 826 114
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="17"/>
+		<traceView traceDataRef="18"/>
+		<traceView traceDataRef="19"/>
+		<traceView traceDataRef="20"/>
+	</traceGroup>
+</traceGroup>
+</ink>

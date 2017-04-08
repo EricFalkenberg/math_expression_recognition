@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB1206_60682</annotation>
+<trace id="3">
+349 89 32464, 349 90 32501, 349 93 32514, 349 101 32527, 349 111 32540, 349 123 32552, 349 133 32566, 349 142 32579, 349 149 32591, 349 152 32606, 349 154 32617
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="3"/>
+	</traceGroup>
+</traceGroup>
+</ink>

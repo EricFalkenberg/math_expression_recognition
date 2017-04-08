@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">85_maira_4609</annotation>
+<trace id="27">
+978 66, 981 68, 1007 94, 1010 99, 1013 104, 1018 116, 1023 130, 1025 137, 1027 145, 1028 153, 1029 161, 1030 169, 1030 177, 1030 185, 1030 193, 1029 201, 1027 208, 1025 216, 1023 222, 1020 229, 1017 236, 1014 243, 1011 249, 1008 255, 1006 260, 1004 265, 1003 269, 1002 273
+</trace>
+<trace id="28">
+400 51, 392 53, 379 81, 377 87, 376 95, 374 103, 372 112, 371 121, 370 132, 370 143, 369 154, 369 165, 370 176, 370 186, 372 196, 373 204, 374 212, 376 219, 378 225, 379 230, 382 235, 384 238, 387 242, 390 246, 392 249, 394 251
+</trace>
+<trace id="29">
+904 183, 905 185, 907 219, 906 228, 906 231, 905 234, 905 236, 905 238, 906 239, 907 240, 908 239, 909 238, 910 237, 911 236, 913 235, 914 234, 916 233, 917 232, 919 231, 920 230, 921 230, 922 229, 923 228, 923 227, 924 226, 924 225
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="27"/>
+		<traceView traceDataRef="28"/>
+		<traceView traceDataRef="29"/>
+	</traceGroup>
+</traceGroup>
+</ink>

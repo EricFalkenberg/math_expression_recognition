@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">89_edwin_4735</annotation>
+<trace id="9">
+485 116, 486 116, 469 121, 469 123, 470 124, 471 125, 474 125, 476 126, 478 126, 479 126, 481 126, 484 127, 486 128, 488 128, 489 129, 490 130, 490 131, 490 132, 490 133, 490 134, 489 134, 488 135, 486 136, 485 137, 483 137, 482 138, 480 138, 479 138, 475 138, 474 138, 472 138, 471 137, 469 137, 468 136, 467 136
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="9"/>
+	</traceGroup>
+</traceGroup>
+</ink>

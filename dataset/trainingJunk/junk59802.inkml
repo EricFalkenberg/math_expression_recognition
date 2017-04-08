@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB0603_59802</annotation>
+<trace id="2">
+426 304 150336, 426 305 150374, 426 306 150439, 426 307 150512, 426 308 150524, 426 309 150537, 426 310 150552, 426 312 150562, 426 313 150575, 426 314 150603, 426 315 150628, 426 318 150640, 426 320 150652, 426 324 150664, 426 326 150675, 426 328 150690, 426 330 150703, 426 331 150728, 426 332 150741, 426 333 150753, 426 334 150766, 426 336 150779, 426 338 150792, 426 340 150805, 426 342 150815, 426 344 150827, 426 346 150841, 426 347 150867, 427 349 150956, 427 353 151086, 427 355 151101, 427 356 151121
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="2"/>
+	</traceGroup>
+</traceGroup>
+</ink>

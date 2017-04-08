@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">98_silas_6141</annotation>
+<trace id="13">
+740 216, 743 215, 750 219, 748 221, 745 224, 744 225, 742 226, 741 227, 740 228, 741 228, 742 228, 743 228, 743 229, 744 230, 745 231, 746 231, 747 231, 748 231, 748 230, 750 230, 751 229, 752 228, 753 228, 754 227, 755 227, 756 227, 757 227
+</trace>
+<trace id="15">
+799 216, 799 215, 802 215, 804 221, 802 222, 801 223, 800 224, 800 225, 799 225, 799 226, 800 226, 801 226, 802 226, 803 226, 803 227, 804 227, 804 228, 805 228, 806 229, 807 229, 807 230, 808 230, 809 230, 810 230, 810 229, 811 229, 812 228, 813 227, 814 226, 815 225, 816 225, 816 224, 817 224
+</trace>
+<trace id="14">
+798 230, 798 227, 795 225, 778 233, 777 235, 776 237, 776 239, 777 241, 778 242, 780 244, 782 245, 784 246, 787 247, 790 248, 793 248, 795 249, 797 249
+</trace>
+<trace id="16">
+751 240, 750 251, 750 259, 751 259, 750 258
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="13"/>
+		<traceView traceDataRef="14"/>
+		<traceView traceDataRef="15"/>
+		<traceView traceDataRef="16"/>
+	</traceGroup>
+</traceGroup>
+</ink>

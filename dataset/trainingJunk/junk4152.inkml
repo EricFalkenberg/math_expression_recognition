@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">81_daniel_4152</annotation>
+<trace id="20">
+942 222, 940 222, 959 217
+</trace>
+<trace id="21">
+990 190, 989 189, 990 183, 990 182, 997 182, 998 183, 998 184, 999 185, 999 186, 998 187, 998 188, 997 189, 997 190, 996 191, 995 192, 994 193, 993 195, 992 196, 991 197, 990 199, 990 200, 989 201, 989 202, 989 203, 989 204, 990 205, 990 206, 991 206, 992 206, 994 206, 996 206, 998 206, 999 206, 1000 205, 1001 205, 1002 205, 1003 205, 1004 205
+</trace>
+<trace id="22">
+985 232, 985 234, 982 253, 982 255, 982 257, 982 258, 982 259, 983 258, 983 257, 983 256, 983 255, 983 254, 983 253, 983 252, 983 251, 982 250, 982 249, 982 248, 982 247, 983 247, 983 246, 984 246, 985 245, 987 244, 988 243, 989 243, 991 242, 993 241, 994 240, 995 239, 997 239, 998 238, 999 237, 1000 237, 1000 236, 1001 236, 1000 235, 1000 236, 999 236
+</trace>
+<trace id="23">
+989 241, 989 247, 994 263, 995 264, 995 265, 995 266, 996 266, 996 265
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="20"/>
+		<traceView traceDataRef="21"/>
+		<traceView traceDataRef="22"/>
+		<traceView traceDataRef="23"/>
+	</traceGroup>
+</traceGroup>
+</ink>

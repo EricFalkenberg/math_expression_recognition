@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB1268_61031</annotation>
+<trace id="18">
+604 298 2848782, 604 300 2848797, 604 302 2848813, 604 304 2848813, 604 306 2848828, 604 307 2848828, 604 310 2848844, 604 312 2848844, 604 314 2848860, 604 318 2848860, 604 321 2848875, 604 324 2848875, 604 327 2848891, 604 329 2848891, 604 331 2848906, 604 332 2848906, 604 334 2848922, 604 335 2848938
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="18"/>
+	</traceGroup>
+</traceGroup>
+</ink>

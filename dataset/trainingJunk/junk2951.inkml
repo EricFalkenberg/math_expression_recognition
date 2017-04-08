@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">65_Frank_2951</annotation>
+<trace id="3">
+689 143, 719 147, 721 147, 724 147, 726 147, 728 148, 729 148, 731 148
+</trace>
+<trace id="5">
+878 116, 881 116, 875 114, 869 118, 861 127, 858 136, 858 139, 859 141, 860 144, 861 146, 863 147, 866 149, 869 149, 872 150, 875 150, 879 150, 882 150, 884 149, 887 149, 889 149, 890 148, 891 148, 892 148
+</trace>
+<trace id="4">
+778 106, 777 102, 775 135, 774 137, 773 143, 773 142, 774 139, 775 136, 778 130, 781 126, 784 122, 787 119, 791 115, 794 112, 798 109, 801 107, 804 105, 806 103, 808 102, 811 100, 813 100, 814 100, 815 100, 816 101, 818 101
+</trace>
+<trace id="6">
+924 123, 916 134, 915 141, 915 149, 921 152, 923 152, 925 151, 932 146, 936 140, 939 135, 938 126, 937 124, 934 121, 933 119, 931 119, 929 119, 928 119, 927 119, 926 120, 927 121, 928 122, 929 122, 931 122, 933 123, 938 122, 941 122, 944 122, 946 121, 952 120, 954 119, 956 118
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="3"/>
+		<traceView traceDataRef="4"/>
+		<traceView traceDataRef="5"/>
+		<traceView traceDataRef="6"/>
+	</traceGroup>
+</traceGroup>
+</ink>

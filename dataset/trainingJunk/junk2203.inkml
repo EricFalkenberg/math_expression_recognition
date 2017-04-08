@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">126_jorge_2203</annotation>
+<trace id="5">
+343 341, 339 322, 347 314, 349 312, 356 310, 359 309, 366 310, 368 311, 370 312, 372 314, 373 320, 373 323, 371 329, 369 332, 367 335, 364 338, 357 342, 354 344, 351 345, 349 346, 347 347, 345 347, 344 347, 345 347, 346 347, 347 347
+</trace>
+<trace id="4">
+347 325, 347 324, 351 373, 351 376, 352 378, 354 382, 354 384, 354 383, 354 382, 353 381, 353 379
+</trace>
+<trace id="7">
+327 409, 324 409, 346 409, 373 408, 380 407, 395 406, 409 406, 421 405, 426 405, 431 405, 439 405, 443 406, 448 406, 450 406, 452 407, 454 407, 455 407, 456 408, 457 408, 456 408, 455 408, 454 408
+</trace>
+<trace id="6">
+383 362, 384 360, 388 384, 388 383, 388 379, 389 375, 391 371, 394 367, 396 364, 399 362, 400 363, 401 363, 402 364, 404 368, 405 370, 407 375, 408 377, 409 382, 410 384, 410 387, 410 389, 410 392, 410 393, 410 394, 410 395, 410 396, 411 397
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="4"/>
+		<traceView traceDataRef="5"/>
+		<traceView traceDataRef="6"/>
+		<traceView traceDataRef="7"/>
+	</traceGroup>
+</traceGroup>
+</ink>

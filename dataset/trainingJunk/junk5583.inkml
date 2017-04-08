@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">94_fujita_5583</annotation>
+<trace id="46">
+784 124
+</trace>
+<trace id="44">
+760 117
+</trace>
+<trace id="45">
+760 117, 761 117, 760 117, 759 117, 758 118, 756 118, 755 119, 754 119, 752 120, 751 121, 750 121, 749 122, 748 123, 747 124, 748 125, 749 126, 750 126, 751 127, 752 127, 754 128, 755 129, 757 130, 759 131, 760 131, 762 132, 763 133, 764 134, 765 134, 765 135, 765 136, 764 136, 764 137, 763 137, 761 137, 759 137, 758 137, 756 137, 754 137, 752 137, 750 137, 748 137, 747 137
+</trace>
+<trace id="43">
+737 85, 735 85, 735 86, 736 86, 737 86, 739 86, 740 86, 743 86, 746 86, 749 85, 753 85, 758 85, 763 84, 769 84, 775 84, 781 83, 788 83, 795 82, 803 82, 810 81, 818 80, 826 79, 834 79, 841 78, 849 78, 856 77, 864 77, 870 76, 877 76, 883 75, 889 75, 894 74, 898 74, 902 74, 905 74, 908 74, 910 74, 912 74, 913 74, 913 75
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="43"/>
+		<traceView traceDataRef="44"/>
+		<traceView traceDataRef="45"/>
+		<traceView traceDataRef="46"/>
+	</traceGroup>
+</traceGroup>
+</ink>

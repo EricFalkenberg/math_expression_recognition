@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">130_Nina_2697</annotation>
+<trace id="36">
+524 53
+</trace>
+<trace id="35">
+497 148, 496 147, 495 148, 495 149, 495 151, 494 153, 494 156, 494 159, 494 162, 494 166, 494 169, 494 172, 494 175, 494 177, 494 178, 493 179, 493 180
+</trace>
+<trace id="34">
+497 148
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="34"/>
+		<traceView traceDataRef="35"/>
+		<traceView traceDataRef="36"/>
+	</traceGroup>
+</traceGroup>
+</ink>

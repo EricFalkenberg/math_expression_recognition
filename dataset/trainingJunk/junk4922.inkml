@@ -1,0 +1,20 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">90_Frank_4922</annotation>
+<trace id="3">
+560 117, 563 129, 561 153, 560 155, 559 153, 561 144, 563 138, 565 135, 572 127, 576 123, 584 117, 588 115, 590 115
+</trace>
+<trace id="4">
+649 123, 651 124, 637 128, 632 129, 630 131, 629 135, 631 138, 638 142, 640 143, 642 144, 644 145, 647 148, 648 148, 650 150, 649 152, 648 153, 647 154, 645 154, 640 156, 637 156, 635 157, 632 157, 629 157, 627 158, 625 158, 623 158, 620 158, 620 157, 621 157
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="3"/>
+		<traceView traceDataRef="4"/>
+	</traceGroup>
+</traceGroup>
+</ink>

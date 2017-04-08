@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB2025_65789</annotation>
+<trace id="12">
+367 125 508333, 367 127 508437, 366 130 508445, 366 132 508453, 366 136 508462, 365 139 508471, 365 141 508479, 365 144 508488, 365 145 508497, 365 146 508505, 365 147 508514, 365 149 508523, 365 150 508531, 365 151 508541, 364 153 508549, 364 154 508558, 364 155 508567, 364 156 508575, 364 158 508584, 364 159 508593, 364 160 508601, 364 162 508610, 364 163 508621, 364 164 508645
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="12"/>
+	</traceGroup>
+</traceGroup>
+</ink>

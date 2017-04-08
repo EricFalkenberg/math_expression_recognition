@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">2011_KAIST_Data2_14_sub_41_34920</annotation>
+<trace id="9">
+8076 1797, 8060 1842, 8053 1872, 8047 1908, 8042 1946, 8033 1985, 8028 2019, 8024 2052, 8024 2075, 8024 2086, 8024 2086, 8044 2064, 8056 2039, 8069 2005, 8083 1973, 8098 1940, 8112 1910, 8126 1888, 8137 1879, 8144 1888, 8150 1908, 8150 1942, 8153 1980, 8153 2028, 8153 2075, 8153 2122, 8162 2161, 8168 2197, 8189 2213
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="9"/>
+	</traceGroup>
+</traceGroup>
+</ink>

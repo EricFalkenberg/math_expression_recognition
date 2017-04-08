@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">117_caue_1624</annotation>
+<trace id="24">
+945 94, 941 94, 963 94, 961 93
+</trace>
+<trace id="21">
+863 124, 863 130, 861 145, 860 152, 857 151, 857 141, 857 128, 857 121, 856 118, 858 115, 859 114, 866 110, 874 110, 880 116, 879 123, 878 124, 868 130, 863 132
+</trace>
+<trace id="22">
+892 109, 892 106, 898 120, 898 132, 895 145, 893 148, 893 147
+</trace>
+<trace id="23">
+911 49, 910 47, 918 57, 922 69, 923 81, 923 95, 922 108, 918 123, 912 140, 909 144
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="21"/>
+		<traceView traceDataRef="22"/>
+		<traceView traceDataRef="23"/>
+		<traceView traceDataRef="24"/>
+	</traceGroup>
+</traceGroup>
+</ink>

@@ -1,0 +1,20 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB3221_71677</annotation>
+<trace id="15">
+575 177 773964, 574 177 774011, 574 179 774027, 574 181 774035, 574 183 774043, 573 185 774051, 573 187 774059, 572 190 774067, 571 191 774075, 571 193 774083, 571 196 774091, 571 199 774099, 571 202 774115, 571 203 774123, 571 206 774131, 571 207 774147, 571 209 774155, 571 210 774163, 571 211 774171, 571 213 774180, 571 214 774203, 571 215 774227
+</trace>
+<trace id="16">
+574 195 774676, 576 193 774747, 578 191 774755, 580 189 774763, 583 188 774771, 584 187 774779, 586 186 774787, 588 186 774795, 590 185 774803, 591 184 774835, 592 184 774843
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="15"/>
+		<traceView traceDataRef="16"/>
+	</traceGroup>
+</traceGroup>
+</ink>

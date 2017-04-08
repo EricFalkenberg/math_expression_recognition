@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">129_david_2431</annotation>
+<trace id="19">
+922 104, 920 105, 930 85, 931 84, 931 83, 932 83, 933 83, 933 84, 933 85, 933 87, 933 89, 932 92, 932 95, 932 98, 931 102, 931 105, 931 109, 930 112, 930 115, 929 118, 929 121, 929 123, 928 124, 928 126, 928 127, 928 126, 928 125, 929 125, 929 124
+</trace>
+<trace id="18">
+880 114, 879 114, 888 115, 903 113, 904 113, 905 113, 905 114, 904 115, 903 115
+</trace>
+<trace id="17">
+891 103, 892 102, 892 103, 891 112, 891 118, 891 125, 891 127, 891 128, 890 128, 890 127, 890 126, 889 126
+</trace>
+<trace id="16">
+848 104, 851 112, 852 122, 852 123, 852 125, 852 126, 852 127, 852 128, 852 127, 852 126, 852 125, 852 124, 852 122, 852 120, 853 118, 854 116, 854 114, 855 112, 856 111, 857 110, 859 109, 860 108, 861 107, 863 107, 864 108, 865 108, 866 109, 867 110, 868 112, 869 114, 870 115, 870 117, 870 119, 871 121, 871 123, 871 125, 871 126, 871 127, 871 128, 871 129, 872 128, 873 127
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="16"/>
+		<traceView traceDataRef="17"/>
+		<traceView traceDataRef="18"/>
+		<traceView traceDataRef="19"/>
+	</traceGroup>
+</traceGroup>
+</ink>

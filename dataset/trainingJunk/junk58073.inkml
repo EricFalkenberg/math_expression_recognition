@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB0002_58073</annotation>
+<trace id="1">
+162 91 2094, 163 91 2140, 165 91 2156, 168 91 2156, 172 91 2172, 177 91 2172, 183 91 2187, 190 92 2187, 197 93 2203, 205 94 2203, 213 95 2219, 219 96 2219, 222 97 2234, 224 98 2234, 225 98 2250, 226 98 2281
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="1"/>
+	</traceGroup>
+</traceGroup>
+</ink>

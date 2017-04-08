@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB2011_65698</annotation>
+<trace id="2">
+467 301 3256672, 466 301 3256703, 465 302 3256719, 464 304 3256719, 464 308 3256734, 461 314 3256734, 459 321 3256750, 457 327 3256750, 455 331 3256766, 452 340 3256766, 449 344 3256781, 446 351 3256781, 444 355 3256797, 442 360 3256797, 441 363 3256812, 439 366 3256812, 439 367 3256828, 438 369 3256828, 438 370 3256859
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="2"/>
+	</traceGroup>
+</traceGroup>
+</ink>

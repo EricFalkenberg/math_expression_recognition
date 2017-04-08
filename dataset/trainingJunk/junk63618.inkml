@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB1715_63618</annotation>
+<trace id="12">
+702 276 287897, 705 276 287977, 706 276 287991, 711 276 288008, 719 276 288025, 725 275 288042, 727 275 288058, 729 275 288075, 730 275 288092, 732 275 288109, 733 275 288126, 735 275 288143, 737 275 288160, 740 275 288177, 741 275 288194, 742 275 288210, 743 275 288227
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="12"/>
+	</traceGroup>
+</traceGroup>
+</ink>

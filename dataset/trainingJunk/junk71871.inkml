@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB3250_71871</annotation>
+<trace id="17">
+844 254 275555, 845 254 275633, 849 253 275643, 850 252 275652, 855 251 275662, 861 251 275672, 866 251 275682, 872 251 275692, 875 251 275702, 880 251 275712, 882 251 275721, 884 251 275731, 887 251 275741, 889 251 275751, 890 251 275760, 891 251 275770, 893 251 275780, 895 250 275810, 896 250 275819
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="17"/>
+	</traceGroup>
+</traceGroup>
+</ink>
