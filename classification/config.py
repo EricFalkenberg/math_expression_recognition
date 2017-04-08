@@ -6,7 +6,8 @@ kdtree_meta = {
                            """
 }
 kdtree_model = {
-    'leaf_size' : 40
+    'leaf_size' : 40,
+    'metric' : 'minkowski'
 }
 
 ## General Configuration
@@ -21,4 +22,9 @@ arg_classes = {
     'type' : str,
     'nargs' : '*',
     'help' : 'The class(es) that should be processed by the classifier'
+}
+
+## Dataset Configuration
+dataset_meta = {
+    'location' : '../dataset/'
 }
