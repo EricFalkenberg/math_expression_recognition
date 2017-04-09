@@ -15,6 +15,14 @@ def load_data(fname):
             Y.append(row[1])
     return X, Y
 
+def reposition_xy_points(stroke_data):
+    distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
+    for key, value in stroke_data.items():
+        stroke_length = sum(sum([distance(s[x], s[x+1]) for x in range(len(s)-1)]) for s in value)
+        print stroke_length
+        print value
+        break
+
 def extract_xy_data(string):
     string = string.split(",")
     return [[float(j) for j in i.split()][:2] for i in string]
@@ -43,6 +51,8 @@ def extract_features(fname):
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
     for directory in dirs:
         stroke_data = retrieve_stroke_data(X, directory, dataset_meta) 
+        reposition_xy_points(stroke_data)
+            
         break # Just for now to speed things up
 
 extract_features("tmp/real-test.csv")
