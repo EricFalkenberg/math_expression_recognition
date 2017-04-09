@@ -15,6 +15,30 @@ def load_data(fname):
             Y.append(row[1])
     return X, Y
 
+def viz(strokes):
+    tmp = []
+    minX   = min([i[0] for i in tmp])
+    minY   = min([i[1] for i in tmp])
+    maxX   = max([i[0] for i in tmp])
+    maxY   = max([i[1] for i in tmp])
+
+    new_strokes = []
+    for stroke in strokes:
+        if (maxX-minX != 0) and (maxY-minY != 0):
+            new_strokes.append([[float((i[0]-minX))/(maxX-minX), float((i[1]-minY))/(maxY-minY)] for i in stroke])
+        else:
+            if (maxX-minX == 0 and maxY-minY == 0):
+                new_strokes.append([[0, 0] for i in stroke])
+            elif (maxX-minX == 0):
+                new_strokes.append([[0, float((i[1]-minY))/(maxY-minY)] for i in stroke])   
+            else:
+                new_strokes.append([[float((i[0]-minX))/(maxX-minX), 0] for i in stroke])   
+    ret = ''
+    for stroke in new_strokes:
+        ret += ' '.join([','.join([str(i[0]*300), str(i[1]*300)]) for i in stroke])
+        ret += '\n'*2
+    return ret
+
 def reposition_xy_points(stroke_data):
     distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
     for key, value in stroke_data.items():
@@ -35,8 +59,8 @@ def reposition_xy_points(stroke_data):
                 while length_to_next_point > distance(stroke[index], stroke[index+1]):
                     length_to_next_point -= distance(stroke[index], stroke[index+1])
                     index += 1
-                if stroke[index+1][0]-stroke[index][0] != 0:
-                    theta = np.arctan((stroke[index+1][1]-stroke[index][1])/(stroke[index+1][0]-stroke[index][0]))
+                if stroke[index+1][1]-stroke[index][1] != 0:
+                    theta = np.arctan((stroke[index+1][0]-stroke[index][0])/(stroke[index+1][1]-stroke[index][1]))
                 else:
                     theta = 0
                 dx = length_to_next_point*np.sin(theta)
@@ -77,7 +101,11 @@ def extract_features(fname):
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
     for directory in dirs:
         raw_stroke_data = retrieve_stroke_data(X, directory, dataset_meta) 
+        print '2011_IVC_depart_F027_E007_28682'
+        print viz(raw_stroke_data['2011_IVC_depart_F027_E007_28682'])
+        print '-'*100
         repositioned_stroke_data = reposition_xy_points(raw_stroke_data)
+        print viz(repositioned_stroke_data['2011_IVC_depart_F027_E007_28682'])
         break # Just for now to speed things up
 
-extract_features("tmp/real-test.csv")
+extract_features("tmp/tmp.csv")
