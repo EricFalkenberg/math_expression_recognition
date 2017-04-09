@@ -18,10 +18,36 @@ def load_data(fname):
 def reposition_xy_points(stroke_data):
     distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
     for key, value in stroke_data.items():
-        stroke_length = sum(sum([distance(s[x], s[x+1]) for x in range(len(s)-1)]) for s in value)
-        print stroke_length
-        print value
-        break
+        segments_length = [sum([distance(s[x], s[x+1]) for x in range(len(s)-1)]) for s in value]
+        stroke_length = sum(segments_length)
+        percentages = [float(i)/stroke_length if stroke_length != 0 else 0 for i in segments_length]
+        processed = []
+        for stroke, percentage, length in zip(value, percentages, segments_length):
+            points_to_place = np.round(percentage*45)
+            if points_to_place == 0:
+                continue
+            points_placed = 1
+            repositioned = [stroke[0]]
+            len_separate = float(length) / points_to_place
+            length_to_next_point = len_separate
+            index = 0
+            while points_placed < points_to_place:
+                while length_to_next_point > distance(stroke[index], stroke[index+1]):
+                    length_to_next_point -= distance(stroke[index], stroke[index+1])
+                    index += 1
+                if stroke[index+1][0]-stroke[index][0] != 0:
+                    theta = np.arctan((stroke[index+1][1]-stroke[index][1])/(stroke[index+1][0]-stroke[index][0]))
+                else:
+                    theta = 0
+                dx = length_to_next_point*np.sin(theta)
+                dy = length_to_next_point*np.cos(theta)
+                repositioned.append([stroke[index][0]+dx, stroke[index][1]+dy])
+                points_placed += 1
+                length_to_next_point = len_separate
+                stroke[index] = repositioned[-1]
+            processed.append(repositioned)
+        stroke_data[key] = processed
+    return stroke_data
 
 def extract_xy_data(string):
     string = string.split(",")
@@ -50,9 +76,8 @@ def extract_features(fname):
     X, Y = load_data(fname)
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
     for directory in dirs:
-        stroke_data = retrieve_stroke_data(X, directory, dataset_meta) 
-        reposition_xy_points(stroke_data)
-            
+        raw_stroke_data = retrieve_stroke_data(X, directory, dataset_meta) 
+        repositioned_stroke_data = reposition_xy_points(raw_stroke_data)
         break # Just for now to speed things up
 
 extract_features("tmp/real-test.csv")
