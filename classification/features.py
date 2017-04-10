@@ -213,6 +213,47 @@ def calc_vicinity_slope(stroke_data):
         new_map[key] = new_strokes
     return new_map
 
+def calc_curvature(stroke_data):
+    distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
+    num_points = len(stroke_data)
+    progress = progressbar.ProgressBar(max_value=num_points)
+    curr = 0
+    new_map = {}
+    print 'Calculating Curvature' 
+    for key, strokes in stroke_data.items():
+        new_strokes = []
+        for stroke in strokes:
+            p0  = 0
+            p1  = 0
+            st = []
+            for idx in range(2, len(stroke)-2):
+                curr_points = stroke[idx]
+                last_points = stroke[idx-2]
+                future_points = stroke[idx+2]
+                diff1 = np.array(curr_points)-np.array(last_points)
+                diff2 = np.array(future_points)-np.array(curr_points)
+                d1 = distance(last_points, curr_points)
+                d2 = distance(curr_points, future_points)
+                dx1 = diff1[0]
+                dx2 = diff2[0]
+                if (d1 != 0):
+                    angle1 = np.arcsin(dx1 / d1)
+                else:
+                    angle1 = 0
+                if (d2 != 0):
+                    angle2 = np.arcsin(dx2 / d2)
+                else:
+                    angle2 = 0
+                st.append(180-angle1-angle2)
+            np1 = 0
+            np0 = 0
+            new_strokes.append([p0, p1] + st + [np1, np0])
+        progress.update(curr)
+        curr += 1
+        new_map[key] = new_strokes
+    return new_map
+
+
 def extract_features(fname):
     X, Y = load_data(fname)
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
@@ -224,7 +265,7 @@ def extract_features(fname):
         ndtse  = calc_ndtse(repositioned_stroke_data)
         norm_y = get_norm_y(repositioned_stroke_data) 
         alpha = calc_vicinity_slope(repositioned_stroke_data)
-        #beta = calc_curvature(repositioned_stroke_data)
+        beta = calc_curvature(repositioned_stroke_data)
         break
 
 extract_features("tmp/real-test.csv")
