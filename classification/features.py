@@ -93,7 +93,7 @@ def reposition_xy_points(stroke_data):
         for stroke, percentage, length in zip(value, percentages, segments_length):
             # Determine the number of points to place on the current stroke
             st = stroke
-            points_to_place = np.round(percentage*50)
+            points_to_place = np.round(percentage*60)
             if points_to_place == 0:
                 continue
             points_placed = 1
@@ -147,6 +147,72 @@ def retrieve_stroke_data(X, directory, config):
     progress.update(curr)
     return {i:trace_map[i] for i in X if i in trace_map}
 
+def calc_ndtse(stroke_data):
+    num_points = len(stroke_data) 
+    progress = progressbar.ProgressBar(max_value=num_points)
+    curr = 0
+    distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
+    new_map = {}
+    print 'Calculating NDTSE'
+    for key, strokes in stroke_data.items():
+        new_strokes = []
+        lengths = [sum(distance(stroke[index], stroke[index+1]) for index in range(len(stroke)-1)) for stroke in strokes]
+        for stroke, length in zip(strokes, lengths):
+            st = []
+            for p in stroke:
+                db = np.abs(distance(stroke[0], p))
+                de = np.abs(distance(p, stroke[-1]))
+                if (length != 0):
+                    st.append(1 - (de-db)/length)
+            new_strokes.append(st)
+        new_map[key] = new_strokes
+        progress.update(curr)
+        curr += 1
+    return new_map
+
+def get_norm_y(stroke_data):
+    num_points = len(stroke_data) 
+    progress = progressbar.ProgressBar(max_value=num_points)
+    curr = 0
+    new_map = {}
+    print 'Retrieving Normalized Y Coordinate'
+    for key, strokes in stroke_data.items():
+        new_strokes = []
+        for stroke in strokes:
+            new_strokes.append([p[1] for p in stroke])
+        new_map[key] = new_strokes
+        progress.update(curr)
+        curr += 1
+    return new_map
+
+def calc_vicinity_slope(stroke_data):
+    distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
+    num_points = len(stroke_data)
+    progress = progressbar.ProgressBar(max_value=num_points)
+    curr = 0
+    new_map = {}
+    print 'Calculating Vicinity Slope'
+    for key, strokes in stroke_data.items():
+        new_strokes = []
+        for stroke in strokes:
+            p0  = 0
+            p1  = 0
+            st = []
+            for idx in range(2, len(stroke)-2):
+                last_points = stroke[idx-2]
+                future_points = stroke[idx+2]
+                diff_points = np.array(future_points)-np.array(last_points)
+                dx = diff_points[0]
+                angle = np.arcsin(dx / distance(last_points, future_points))
+                st.append(angle+90)
+            np1 = 0
+            np0 = 0
+            new_strokes.append([p0, p1] + st + [np1, np0])
+        progress.update(curr)
+        curr += 1
+        new_map[key] = new_strokes
+    return new_map
+
 def extract_features(fname):
     X, Y = load_data(fname)
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
@@ -155,6 +221,10 @@ def extract_features(fname):
         norm_stroke_data = normalize_coords(raw_stroke_data)
         smoothed_stroke_data = smooth_xy_points(norm_stroke_data)
         repositioned_stroke_data = reposition_xy_points(smoothed_stroke_data)
+        ndtse  = calc_ndtse(repositioned_stroke_data)
+        norm_y = get_norm_y(repositioned_stroke_data) 
+        alpha = calc_vicinity_slope(repositioned_stroke_data)
+        #beta = calc_curvature(repositioned_stroke_data)
         break
 
 extract_features("tmp/real-test.csv")
