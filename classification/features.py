@@ -34,6 +34,18 @@ def viz(strokes):
         ret += '\n'*2
     return ret
 
+def smooth_xy_points(stroke_data):
+    new_data = {}
+    for key, value in stroke_data.items():
+        smoothed = []
+        for stroke in value:
+            new_stroke = [(np.array(stroke[i-1]) + np.array(stroke[i]) + np.array(stroke[i+1])) / 3.0 \
+                                                                            for i in range(1, len(stroke)-1)]
+            new_stroke = [stroke[0]] + new_stroke + [stroke[-1]]
+            smoothed.append(stroke)
+        new_data[key] = smoothed
+    return new_data
+
 def reposition_xy_points(stroke_data):
     distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
     ret_map = {}
@@ -106,7 +118,8 @@ def extract_features(fname):
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
     for directory in dirs:
         raw_stroke_data = retrieve_stroke_data(X, directory, dataset_meta) 
-        repositioned_stroke_data = reposition_xy_points(raw_stroke_data)
+        smoothed_stroke_data = smooth_xy_points(raw_stroke_data)
+        repositioned_stroke_data = reposition_xy_points(smoothed_stroke_data)
         break # Just for now to speed things up
 
 extract_features("tmp/tmp.csv")
