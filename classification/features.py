@@ -17,6 +17,8 @@ def load_data(fname):
 
 def viz(strokes):
     tmp = []
+    for stroke in strokes:
+        tmp.extend(stroke)
     minX   = min([i[0] for i in tmp])
     minY   = min([i[1] for i in tmp])
     maxX   = max([i[0] for i in tmp])
@@ -26,13 +28,6 @@ def viz(strokes):
     for stroke in strokes:
         if (maxX-minX != 0) and (maxY-minY != 0):
             new_strokes.append([[float((i[0]-minX))/(maxX-minX), float((i[1]-minY))/(maxY-minY)] for i in stroke])
-        else:
-            if (maxX-minX == 0 and maxY-minY == 0):
-                new_strokes.append([[0, 0] for i in stroke])
-            elif (maxX-minX == 0):
-                new_strokes.append([[0, float((i[1]-minY))/(maxY-minY)] for i in stroke])   
-            else:
-                new_strokes.append([[float((i[0]-minX))/(maxX-minX), 0] for i in stroke])   
     ret = ''
     for stroke in new_strokes:
         ret += ' '.join([','.join([str(i[0]*300), str(i[1]*300)]) for i in stroke])
@@ -41,37 +36,47 @@ def viz(strokes):
 
 def reposition_xy_points(stroke_data):
     distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
+    ret_map = {}
     for key, value in stroke_data.items():
+        # Populate list representing the length of each stroke
         segments_length = [sum([distance(s[x], s[x+1]) for x in range(len(s)-1)]) for s in value]
+        # Calculate total length of symbol strokes combined
         stroke_length = sum(segments_length)
+        # Estimate the percentage of each stroke length in relation to total symbol length
         percentages = [float(i)/stroke_length if stroke_length != 0 else 0 for i in segments_length]
         processed = []
+        # Iterate through all strokes
         for stroke, percentage, length in zip(value, percentages, segments_length):
-            points_to_place = np.round(percentage*45)
+            # Determine the number of points to place on the current stroke
+            st = stroke
+            points_to_place = np.round(percentage*50)
             if points_to_place == 0:
                 continue
             points_placed = 1
-            repositioned = [stroke[0]]
+            repositioned = [st[0]]
+            # Distance between each new point
             len_separate = float(length) / points_to_place
+            
             length_to_next_point = len_separate
             index = 0
             while points_placed < points_to_place:
-                while length_to_next_point > distance(stroke[index], stroke[index+1]):
-                    length_to_next_point -= distance(stroke[index], stroke[index+1])
+                # While our next point isnt between index and index+1, increment
+                while length_to_next_point > distance(st[index], st[index+1]):
+                    length_to_next_point -= distance(st[index], st[index+1])
                     index += 1
-                if stroke[index+1][1]-stroke[index][1] != 0:
-                    theta = np.arctan((stroke[index+1][0]-stroke[index][0])/(stroke[index+1][1]-stroke[index][1]))
-                else:
-                    theta = 0
-                dx = length_to_next_point*np.sin(theta)
-                dy = length_to_next_point*np.cos(theta)
-                repositioned.append([stroke[index][0]+dx, stroke[index][1]+dy])
+                od = distance(st[index], st[index+1])
+                t  = length_to_next_point / distance(st[index], st[index+1])
+                new_x = (1 - t)*st[index][0] + t*st[index+1][0]
+                new_y = (1 - t)*st[index][1] + t*st[index+1][1] 
+                # Add new point to repositioned array
+                repositioned.append([new_x, new_y])
                 points_placed += 1
+                # Reset length to next point and set current index to point placed
                 length_to_next_point = len_separate
-                stroke[index] = repositioned[-1]
+                st[index] = repositioned[-1]
             processed.append(repositioned)
-        stroke_data[key] = processed
-    return stroke_data
+        ret_map[key] = processed
+    return ret_map
 
 def extract_xy_data(string):
     string = string.split(",")
@@ -101,11 +106,7 @@ def extract_features(fname):
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
     for directory in dirs:
         raw_stroke_data = retrieve_stroke_data(X, directory, dataset_meta) 
-        print '2011_IVC_depart_F027_E007_28682'
-        print viz(raw_stroke_data['2011_IVC_depart_F027_E007_28682'])
-        print '-'*100
         repositioned_stroke_data = reposition_xy_points(raw_stroke_data)
-        print viz(repositioned_stroke_data['2011_IVC_depart_F027_E007_28682'])
         break # Just for now to speed things up
 
 extract_features("tmp/tmp.csv")
