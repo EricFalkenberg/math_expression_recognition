@@ -34,8 +34,34 @@ def viz(strokes):
         ret += '\n'*2
     return ret
 
+def normalize_coords(stroke_data):
+    new_data = {}
+    num_points = len(stroke_data) 
+    progress = progressbar.ProgressBar(max_value=num_points)
+    curr = 0
+    print "Normalizing Coords"
+    for key, strokes in stroke_data.items():
+        tmp = []
+        for stroke in strokes:
+            tmp.extend(stroke)
+        minY = min([i[1] for i in tmp])
+        maxY = max([i[1] for i in tmp])
+        
+        new_strokes = []
+        for stroke in strokes:
+            if (maxY-minY != 0):
+                new_strokes.append([[float((i[0]-minY))/(maxY-minY), float((i[1]-minY))/(maxY-minY)] for i in stroke])
+        new_data[key] = new_strokes 
+        progress.update(curr)
+        curr += 1
+    return new_data
+
 def smooth_xy_points(stroke_data):
     new_data = {}
+    num_points = len(stroke_data) 
+    progress = progressbar.ProgressBar(max_value=num_points)
+    curr = 0
+    print "Smoothing Stroke Data"
     for key, value in stroke_data.items():
         smoothed = []
         for stroke in value:
@@ -44,11 +70,17 @@ def smooth_xy_points(stroke_data):
             new_stroke = [stroke[0]] + new_stroke + [stroke[-1]]
             smoothed.append(stroke)
         new_data[key] = smoothed
+        progress.update(curr)
+        curr += 1
     return new_data
 
 def reposition_xy_points(stroke_data):
     distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
     ret_map = {}
+    num_points = len(stroke_data) 
+    progress = progressbar.ProgressBar(max_value=num_points)
+    curr = 0
+    print "Resampling Points"
     for key, value in stroke_data.items():
         # Populate list representing the length of each stroke
         segments_length = [sum([distance(s[x], s[x+1]) for x in range(len(s)-1)]) for s in value]
@@ -88,6 +120,8 @@ def reposition_xy_points(stroke_data):
                 st[index] = repositioned[-1]
             processed.append(repositioned)
         ret_map[key] = processed
+        progress.update(curr)
+        curr += 1
     return ret_map
 
 def extract_xy_data(string):
@@ -118,8 +152,9 @@ def extract_features(fname):
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
     for directory in dirs:
         raw_stroke_data = retrieve_stroke_data(X, directory, dataset_meta) 
-        smoothed_stroke_data = smooth_xy_points(raw_stroke_data)
+        norm_stroke_data = normalize_coords(raw_stroke_data)
+        smoothed_stroke_data = smooth_xy_points(norm_stroke_data)
         repositioned_stroke_data = reposition_xy_points(smoothed_stroke_data)
-        break # Just for now to speed things up
+        break
 
-extract_features("tmp/tmp.csv")
+extract_features("tmp/real-test.csv")
