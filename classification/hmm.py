@@ -1,48 +1,41 @@
 import argparse
 import numpy as np
 from hmmlearn import hmm
-from config import hmm_model_meta, arg_dataset, arg_classes
+from config import hmm_meta, hmm_model, arg_dataset, arg_classes
 from features import extract_features
 
-NUM_STATES = 6
-NUM_GAUSSIANS = 5
 
+class classifier:
 
-classNames = ['!', '(', ')', '+', '-', '.', '/', '0', '1', '2', '3', '4', '5',
-              '6', '7', '8', '9', '=', 'A', 'B', 'C', 'COMMA', 'E', 'F', 'G',
-              'H', 'I', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'V', 'X', 'Y', '[',
-              '\\Delta', '\\alpha', '\\beta', '\\cos', '\\div', '\\exists',
-              '\\forall', '\\gamma', '\\geq', '\\gt', '\\in', '\\infty', '\\int',
-              '\\lambda', '\\ldots', '\\leq', '\\lim', '\\log', '\\lt', '\\mu',
-              '\\neq', '\\phi', '\\pi', '\\pm', '\\prime', '\\rightarrow',
-              '\\sigma', '\\sin', '\\sqrt', '\\sum', '\\tan', '\\theta', '\\times',
-              '\\{', '\\}', ']', 'a', 'b', 'c', 'd', 'e', 'f', 'g','h', 'i',
-              'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
-              'v', 'w', 'x', 'y', 'z', '|']
+    def __init__(this, X, Y, config):
+        hmm_map = {}
+        for c in hmm_meta['class_names']:
+            model = hmm.GMMHMM(**hmm_model)
+            hmm_map[c] = model
+            #gt, features = extract_features(args.dataset[0])
+            #trainModel(model, features)
 
-
-def trainModel(hmm, sample):
-    hmm.predict(sample)
-    return hmm
-
+    def evaluate_model(this, samples, targets):
+        correct, incorrect = 0, 0
+        for sample, target in zip(samples, targets):
+            p = this.predict(sample)
+            if p[1] == target[1]: correct += 1
+            else: incorrect += 1
+        print "CORRECT PERCENTAGE: %.2f" % (float(correct) / (correct+incorrect))
+             
+    def predict(this, sample):
+        hmm.predict(sample)
+        return hmm
+    
 
 if __name__ == '__main__':
     ## Parse command line arguments
-    parser = argparse.ArgumentParser(description=hmm_model_meta['program_description'])
+    parser = argparse.ArgumentParser(description=hmm_meta['program_description'])
     parser.add_argument('dataset', **arg_dataset)
     parser.add_argument('classes', **arg_classes)
     args = parser.parse_args()
 
-    hmmMap = {}
-    for c in classNames:
-        model = hmm.GMMHMM(n_components=NUM_STATES, n_mix=NUM_GAUSSIANS, covariance_type="diag")
-        model.startprob_ = np.array([1, 0, 0, 0, 0, 0])
-        model.transmat_  = np.array([[ 1.0/NUM_STATES ] * NUM_STATES ] * NUM_STATES)
-        #model.means_     = np.array([0] * NUM_STATES)
-        #gt, features = extract_features(args.dataset[0])
-        hmmMap[c] = model#trainModel(model, features)
-
-    print(hmmMap.keys())
+    c = classifier(None, None, None)
 
 
 

@@ -1,3 +1,5 @@
+import numpy as np
+
 ## KD-Tree Specific Configuration
 kdtree_meta = {
     'program_description': """
@@ -11,11 +13,34 @@ kdtree_model = {
 }
 
 ## HMM Specific Configuration
-hmm_model_meta = {
+hmm_meta = {
     'program_description': """
                            Classify isolated handwritten math symbols with a k-d tree implementation of
                            the 1-NN algorithm.
-                           """
+                           """,
+    'class_names' : ['!', '(', ')', '+', '-', '.', '/', '0', '1', '2', '3', '4', '5',
+                      '6', '7', '8', '9', '=', 'A', 'B', 'C', 'COMMA', 'E', 'F', 'G',
+                      'H', 'I', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'V', 'X', 'Y', '[',
+                      '\\Delta', '\\alpha', '\\beta', '\\cos', '\\div', '\\exists',
+                      '\\forall', '\\gamma', '\\geq', '\\gt', '\\in', '\\infty', '\\int',
+                      '\\lambda', '\\ldots', '\\leq', '\\lim', '\\log', '\\lt', '\\mu',
+                      '\\neq', '\\phi', '\\pi', '\\pm', '\\prime', '\\rightarrow',
+                      '\\sigma', '\\sin', '\\sqrt', '\\sum', '\\tan', '\\theta', '\\times',
+                      '\\{', '\\}', ']', 'a', 'b', 'c', 'd', 'e', 'f', 'g','h', 'i',
+                      'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+                      'v', 'w', 'x', 'y', 'z', '|']
+}
+hmm_model = {
+    'n_components': 6,
+    'n_mix' : 5,
+    'covariance_type' : 'diag',
+    'startprob_prior' : [1, 0, 0, 0, 0, 0],
+    'transmat_prior'  : [[0.5, 0.5, 0.0, 0.0, 0.0, 0.0],
+                         [0.0, 0.5, 0.5, 0.0, 0.0, 0.0],
+                         [0.0, 0.0, 0.5, 0.5, 0.0, 0.0],
+                         [0.0, 0.0, 0.0, 0.5, 0.5, 0.0],
+                         [0.0, 0.0, 0.0, 0.0, 0.5, 0.5],
+                         [0.0, 0.0, 0.0, 0.0, 0.0, 1.0]]
 }
 
 ## General Configuration
