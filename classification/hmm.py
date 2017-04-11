@@ -9,23 +9,19 @@ class classifier:
 
     def __init__(this, X, Y, config):
         hmm_map = {}
-        for c in hmm_meta['class_names']:
-            model = hmm.GMMHMM(**hmm_model)
-            hmm_map[c] = model
-            #gt, features = extract_features(args.dataset[0])
-            #trainModel(model, features)
+        ## TODO: Split dataset up by class
+        ## TODO: Train each model by class sample
+        ## TODO: A lot of things
+        for target in hmm_meta['class_names']:
+            model = hmm.GMMHMM(**config)
+            #model = model.fit(X)
+            hmm_map[target] = model
 
     def evaluate_model(this, samples, targets):
-        correct, incorrect = 0, 0
-        for sample, target in zip(samples, targets):
-            p = this.predict(sample)
-            if p[1] == target[1]: correct += 1
-            else: incorrect += 1
-        print "CORRECT PERCENTAGE: %.2f" % (float(correct) / (correct+incorrect))
+        pass
              
     def predict(this, sample):
-        hmm.predict(sample)
-        return hmm
+        pass
     
 
 if __name__ == '__main__':
@@ -35,7 +31,8 @@ if __name__ == '__main__':
     parser.add_argument('classes', **arg_classes)
     args = parser.parse_args()
 
-    c = classifier(None, None, None)
+    gt, features = extract_features(args.dataset[0])
+    c = classifier(features, gt, hmm_model)
 
 
 
