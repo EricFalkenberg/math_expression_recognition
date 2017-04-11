@@ -51,6 +51,8 @@ def normalize_coords(stroke_data):
         for stroke in strokes:
             if (maxY-minY != 0):
                 new_strokes.append([[float((i[0]-minY))/(maxY-minY), float((i[1]-minY))/(maxY-minY)] for i in stroke])
+            else:
+                new_strokes.append([[0, 0] for i in stroke])
         new_data[key] = new_strokes 
         progress.update(curr)
         curr += 1
@@ -164,6 +166,8 @@ def calc_ndtse(stroke_data):
                 de = np.abs(distance(p, stroke[-1]))
                 if (length != 0):
                     st.append(1 - (de-db)/length)
+                else:
+                    st.append(0)
             new_strokes.append(st)
         new_map[key] = new_strokes
         progress.update(curr)
@@ -203,7 +207,11 @@ def calc_vicinity_slope(stroke_data):
                 future_points = stroke[idx+2]
                 diff_points = np.array(future_points)-np.array(last_points)
                 dx = diff_points[0]
-                angle = np.arcsin(dx / distance(last_points, future_points))
+                dist = distance(last_points, future_points)
+                if dist != 0:
+                    angle = np.arcsin(dx / distance(last_points, future_points))
+                else:
+                    angle = 0
                 st.append(angle+90)
             np1 = 0
             np0 = 0
@@ -278,6 +286,6 @@ def extract_features(fname):
             beta[key] = flatten(sample)
             if ndtse[key] != []:
                 names.append([key,class_map[key]]) 
-                dataset.append((ndtse[key]+norm_y[key]+alpha[key]+beta[key])[:55*4])
+                dataset.append((ndtse[key][:55]+norm_y[key][:55]+alpha[key][:55]+beta[key][:55]))
         return names, dataset
 
