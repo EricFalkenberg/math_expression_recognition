@@ -10,11 +10,19 @@ class classifier:
         this.X = X
         this.Y = Y
         this.tree = KDTree(X, **config)
+
+    def evaluate_model(this, samples, targets):
+        correct, incorrect = 0, 0
+        for sample, target in zip(samples, targets):
+            p = this.predict(sample)
+            if p == target[1]: correct += 1
+            else: incorrect += 1
+        print "CORRECT PERCENTAGE: %.2f" % (correct / (correct+incorrect))
+             
     
     def predict(this, sample):
         dist, ind = this.tree.query(sample, k=1)
-        print dist, ind
-        print this.Y[ind[0,0]]
+        return this.Y[ind[0,0]][1]
 
 if __name__ == '__main__':
     ## Parse command line arguments
@@ -25,5 +33,5 @@ if __name__ == '__main__':
     ## Run classifier
     gt, features = extract_features(args.dataset[0])
     c = classifier(features, gt, kdtree_model)   
-    gt, test_f   = extract_features("tmp/tmp.csv")
-    c.predict(test_f[0]) 
+    gt, test_f   = extract_features("tmp/test.csv")
+    c.evaluate_model(test_f, gt)
