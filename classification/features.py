@@ -256,16 +256,28 @@ def calc_curvature(stroke_data):
 
 def extract_features(fname):
     X, Y = load_data(fname)
+    class_map = dict(zip(X, Y))
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
+    names   = []
     for directory in dirs:
         raw_stroke_data = retrieve_stroke_data(X, directory, dataset_meta) 
         norm_stroke_data = normalize_coords(raw_stroke_data)
         smoothed_stroke_data = smooth_xy_points(norm_stroke_data)
         repositioned_stroke_data = reposition_xy_points(smoothed_stroke_data)
-        ndtse  = calc_ndtse(repositioned_stroke_data)
-        norm_y = get_norm_y(repositioned_stroke_data) 
-        alpha = calc_vicinity_slope(repositioned_stroke_data)
-        beta = calc_curvature(repositioned_stroke_data)
-        break
+        ndtse   = calc_ndtse(repositioned_stroke_data)
+        norm_y  = get_norm_y(repositioned_stroke_data) 
+        alpha   = calc_vicinity_slope(repositioned_stroke_data)
+        beta    = calc_curvature(repositioned_stroke_data)
+        flatten = lambda l: [item for sublist in l for item in sublist]
+        dataset = [] 
+        idx = 0
+        for key, sample in ndtse.items():
+            ndtse[key] = flatten(sample)
+            norm_y[key] = flatten(sample)
+            alpha[key] = flatten(sample)
+            beta[key] = flatten(sample)
+            if ndtse[key] != []:
+                names.append([key,class_map[key]]) 
+                dataset.append((ndtse[key]+norm_y[key]+alpha[key]+beta[key])[:55*4])
+        return names, dataset
 
-extract_features("tmp/real-test.csv")
