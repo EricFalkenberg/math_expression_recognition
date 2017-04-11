@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">"200924-1312-66.ink"_53872</annotation>
+<trace id="2">
+14717 6399, 14712 6405, 14717 6410, 14731 6416, 14751 6419, 14779 6424, 14810 6424, 14846 6430, 14883 6430, 14922 6433, 14955 6430, 14986 6427, 15017 6427, 15042 6427, 15065 6421, 15087 6416, 15107 6405
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="2"/>
+	</traceGroup>
+</traceGroup>
+</ink>

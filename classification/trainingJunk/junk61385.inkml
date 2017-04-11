@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB1316_61385</annotation>
+<trace id="2">
+169 330 771971, 170 330 771971, 172 330 771971, 174 330 771986, 177 330 772002, 180 330 772002, 183 330 772018, 187 330 772018, 190 330 772033, 192 330 772033, 193 330 772049, 195 330 772049, 196 330 772064, 197 330 772064, 198 330 772080, 199 330 772080, 200 330 772096, 201 330 772111, 202 330 772127, 203 330 772142, 204 330 772174, 205 330 772174, 206 330 772189, 207 330 772189, 209 330 772205, 210 330 772205, 210 331 772252
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="2"/>
+	</traceGroup>
+</traceGroup>
+</ink>

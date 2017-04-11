@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">75_herbert_3493</annotation>
+<trace id="15">
+908 135, 906 135, 904 148, 906 152, 912 159, 913 160, 916 162, 918 163, 920 163, 922 163, 923 163, 925 163, 927 162, 928 162, 930 161, 931 160, 932 159, 933 157, 934 156, 935 154, 936 152, 936 150, 936 148, 936 145, 936 143, 935 141, 935 138, 933 136, 932 134, 929 133, 927 132, 924 132, 921 132, 918 132, 915 133, 912 133
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="15"/>
+	</traceGroup>
+</traceGroup>
+</ink>

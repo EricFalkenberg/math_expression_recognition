@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">2011_KAIST_Data2_10_sub_43_34043</annotation>
+<trace id="9">
+7259 4586, 7246 4591, 7252 4582, 7261 4577, 7279 4573, 7304 4573, 7340 4564, 7381 4559, 7431 4550, 7483 4543, 7541 4530, 7595 4516, 7647 4503, 7693 4485, 7729 4469, 7763 4449, 7790 4430, 7808 4415, 7828 4392
+</trace>
+<trace id="8">
+6403 4873, 6442 4871, 6462 4860, 6494 4853, 6528 4846, 6573 4832, 6620 4826, 6672 4814, 6722 4808, 6776 4796, 6823 4792, 6866 4783, 6905 4776, 6934 4776, 6959 4767, 6975 4767, 6988 4760, 6997 4758, 6997 4758
+</trace>
+<trace id="10">
+7726 4234, 7652 4275, 7611 4304, 7571 4338, 7530 4379, 7489 4428, 7451 4482, 7410 4546, 7379 4609, 7349 4679, 7327 4747, 7311 4814, 7302 4880, 7302 4939, 7306 4993, 7320 5040, 7338 5081, 7365 5110, 7397 5133, 7435 5144, 7474 5153, 7521 5146, 7571 5128, 7618 5108
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="8"/>
+		<traceView traceDataRef="9"/>
+		<traceView traceDataRef="10"/>
+	</traceGroup>
+</traceGroup>
+</ink>

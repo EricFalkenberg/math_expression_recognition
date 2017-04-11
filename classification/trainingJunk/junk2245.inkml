@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">126_Nina_2245</annotation>
+<trace id="38">
+747 88
+</trace>
+<trace id="37">
+692 113, 691 114, 690 114, 689 115, 688 116, 686 118, 683 121, 680 123, 678 124, 676 126, 673 127, 671 129, 668 131, 666 132, 665 133, 664 133, 664 134, 663 134, 664 135, 665 136, 665 137, 666 137, 667 138, 668 139, 670 139, 672 140, 674 141, 676 142, 679 143, 681 144, 684 145, 686 146, 688 147, 690 148, 691 148, 692 148, 693 149, 694 149
+</trace>
+<trace id="36">
+692 113
+</trace>
+<trace id="35">
+611 220, 612 219, 612 218, 613 217, 613 216, 613 215, 614 214, 615 213, 615 212, 616 211, 616 210, 617 210, 617 211, 617 212, 617 213, 617 215, 617 218, 617 220, 618 225, 618 227, 618 229, 618 230, 618 232, 618 233, 618 234, 618 235
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="35"/>
+		<traceView traceDataRef="36"/>
+		<traceView traceDataRef="37"/>
+		<traceView traceDataRef="38"/>
+	</traceGroup>
+</traceGroup>
+</ink>

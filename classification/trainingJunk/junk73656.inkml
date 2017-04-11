@@ -1,0 +1,20 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB3517_73656</annotation>
+<trace id="18">
+735 277 372075, 741 275 372130, 743 275 372154, 745 275 372170, 747 275 372234, 749 275 372314, 751 275 372346
+</trace>
+<trace id="17">
+697 243 370987, 703 243 371026, 705 243 371050, 707 243 371066, 709 243 371090, 711 243 371130, 712 243 371162, 713 243 371178
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="17"/>
+		<traceView traceDataRef="18"/>
+	</traceGroup>
+</traceGroup>
+</ink>

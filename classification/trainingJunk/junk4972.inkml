@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">90_lucelia_4972</annotation>
+<trace id="7">
+693 96, 690 97, 693 96, 695 96, 699 96, 703 110, 703 111, 703 112, 703 113, 703 112, 703 111, 703 110, 704 109, 705 107, 706 105, 707 103, 708 101, 710 99, 711 97, 713 96, 714 95, 715 94, 717 94, 718 94, 719 95, 719 96, 720 98, 720 100, 721 103, 722 105, 722 108, 723 110, 723 113, 724 114, 724 116, 725 117, 725 118, 726 119, 727 118
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="7"/>
+	</traceGroup>
+</traceGroup>
+</ink>

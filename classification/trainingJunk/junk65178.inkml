@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB1939_65178</annotation>
+<trace id="5">
+268 133 5730911, 269 133 5730946, 270 133 5730968, 274 133 5730990, 280 134 5731013, 285 134 5731039, 287 134 5731059, 290 134 5731081, 291 134 5731105, 293 134 5731129, 294 134 5731154, 295 134 5731176, 296 134 5731202
+</trace>
+<trace id="4">
+267 120 5729586, 268 120 5729755, 269 120 5729774, 270 120 5729796, 275 120 5729820, 277 120 5729839, 280 120 5729861, 282 121 5729880, 283 121 5729904, 287 121 5729925, 289 121 5729944, 291 121 5729967, 293 121 5729988
+</trace>
+<trace id="7">
+320 113 5732632, 321 113 5732655, 324 116 5732675, 328 125 5732699, 335 138 5732723, 338 142 5732745, 343 152 5732769, 344 154 5732790, 345 156 5732814
+</trace>
+<trace id="6">
+307 95 5731772, 308 97 5731792, 309 101 5731812, 311 114 5731838, 312 129 5731857, 312 143 5731879, 312 150 5731904, 312 163 5731925, 312 166 5731944, 312 170 5731964, 312 169 5732059
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="4"/>
+		<traceView traceDataRef="5"/>
+		<traceView traceDataRef="6"/>
+		<traceView traceDataRef="7"/>
+	</traceGroup>
+</traceGroup>
+</ink>

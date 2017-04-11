@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">2011_IVC_depart_F013_E009_13303</annotation>
+<trace id="3">
+11.1828 30.8204, 11.1949 30.8164, 11.2189 30.8204, 11.2591 30.8244, 11.3032 30.8284, 11.3393 30.8365
+</trace>
+<trace id="2">
+11.1628 30.68, 11.1628 30.676, 11.1828 30.68, 11.2149 30.688, 11.255 30.688, 11.2871 30.7, 11.3072 30.7081, 11.3152 30.7161, 11.3112 30.7241
+</trace>
+<trace id="5">
+12.5029 30.9007, 12.511 30.8966, 12.5511 30.8966, 12.6032 30.8926, 12.6674 30.8926, 12.7236 30.9007, 12.7597 30.9127, 12.8039 30.9127, 12.852 30.9247, 12.8841 30.9287, 12.9162 30.9167, 12.9403 30.9207
+</trace>
+<trace id="4">
+12.7557 30.2707, 12.7517 30.2587, 12.7477 30.2627, 12.7557 30.3028, 12.7517 30.367, 12.7517 30.4513, 12.7678 30.5275, 12.7878 30.5837, 12.7958 30.6278, 12.7999 30.6559, 12.8039 30.6719, 12.8039 30.676, 12.8039 30.68, 12.8039 30.676, 12.7958 30.676
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="2"/>
+		<traceView traceDataRef="3"/>
+		<traceView traceDataRef="4"/>
+		<traceView traceDataRef="5"/>
+	</traceGroup>
+</traceGroup>
+</ink>

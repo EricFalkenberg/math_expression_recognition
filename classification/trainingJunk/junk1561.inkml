@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">116_miguel_1561</annotation>
+<trace id="11">
+828 85, 829 86, 818 103, 817 105, 816 109, 815 110, 815 112, 814 113, 814 114, 814 115, 814 116, 814 117, 814 116, 815 116, 815 115, 816 115
+</trace>
+<trace id="13">
+903 93, 887 104, 886 106, 886 108, 886 109, 886 110, 887 112, 888 113, 889 113, 892 114, 894 115, 895 115, 898 115, 899 115, 900 115, 901 115, 900 115
+</trace>
+<trace id="12">
+863 98, 863 97, 848 104, 846 106, 845 107, 845 109, 846 111, 848 112, 850 112, 851 113, 852 113, 855 113, 858 112, 861 110, 863 108, 864 107, 865 105, 866 104, 866 102, 867 101, 867 100, 867 99, 867 98, 867 97, 866 98, 866 99, 866 100, 865 101, 865 102, 865 103, 865 104, 865 105, 866 106, 866 107, 866 108, 867 109, 868 110, 868 111, 869 111, 870 112, 871 112, 872 112, 873 113, 874 113, 875 113, 876 113
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="11"/>
+		<traceView traceDataRef="12"/>
+		<traceView traceDataRef="13"/>
+	</traceGroup>
+</traceGroup>
+</ink>

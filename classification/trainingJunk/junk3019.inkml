@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">65_mijail_3019</annotation>
+<trace id="7">
+802 86, 805 86, 807 85, 808 83, 795 84, 793 85, 792 86, 790 87, 789 88, 787 89, 787 90, 786 91, 786 92, 787 93, 787 94, 788 95, 790 96, 791 97, 793 97, 795 98, 797 99, 799 100, 801 101, 803 103, 805 104, 806 106, 807 107, 808 109, 809 111, 809 114, 809 116, 808 118, 807 120, 806 122, 804 124, 802 125, 800 126, 798 127, 795 127, 792 127, 789 127, 787 127, 784 126, 782 126, 780 125, 779 125, 778 124, 777 124, 777 123, 777 122, 777 121, 777 120, 778 119, 779 119, 780 118
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="7"/>
+	</traceGroup>
+</traceGroup>
+</ink>

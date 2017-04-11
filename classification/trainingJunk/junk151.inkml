@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">101_mijail_151</annotation>
+<trace id="24">
+958 111, 958 119, 952 141, 952 142, 952 144, 951 144, 951 145
+</trace>
+<trace id="25">
+968 114, 968 116, 966 127, 964 138, 964 141, 963 143, 963 144, 962 146, 962 147, 963 147
+</trace>
+<trace id="26">
+1001 80, 1002 81, 1011 109, 1011 113, 1012 117, 1012 122, 1011 126, 1011 130, 1010 135, 1010 139, 1009 143, 1008 147, 1006 151, 1005 155, 1003 158, 1002 162, 1000 165, 998 168, 997 170, 995 173, 994 175, 993 177, 991 178, 990 180, 989 180, 988 181, 987 181, 986 181, 985 181
+</trace>
+<trace id="23">
+942 107, 946 103, 961 108, 963 109, 964 110, 966 111, 967 111, 968 112, 970 112, 971 112, 973 112, 974 111, 976 111, 978 110, 980 109, 982 108, 984 108, 986 107, 988 106, 989 105, 991 104, 992 104
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="23"/>
+		<traceView traceDataRef="24"/>
+		<traceView traceDataRef="25"/>
+		<traceView traceDataRef="26"/>
+	</traceGroup>
+</traceGroup>
+</ink>

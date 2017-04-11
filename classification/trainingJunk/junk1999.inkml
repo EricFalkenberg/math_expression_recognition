@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">124_Fabricio_1999</annotation>
+<trace id="25">
+739 187, 740 189, 753 189, 762 188, 766 188, 770 187, 774 187, 779 186, 784 185, 790 185, 795 184, 801 183, 807 183, 813 182, 819 182, 824 182, 830 181, 836 181, 859 180, 863 180, 867 180, 870 180, 873 180, 876 179, 878 179, 880 179, 882 179, 883 179, 884 179
+</trace>
+<trace id="26">
+757 223, 756 224, 764 214, 766 212, 766 225, 766 228, 765 232, 765 235, 764 237, 764 240, 764 242, 763 243, 763 244, 763 245, 763 246, 764 245, 764 244, 765 243, 765 241, 765 240
+</trace>
+<trace id="27">
+794 229, 795 231, 809 232, 810 232, 811 232, 812 232
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="25"/>
+		<traceView traceDataRef="26"/>
+		<traceView traceDataRef="27"/>
+	</traceGroup>
+</traceGroup>
+</ink>

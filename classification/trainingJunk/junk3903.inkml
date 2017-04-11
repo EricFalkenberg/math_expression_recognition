@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">79_maira_3903</annotation>
+<trace id="16">
+877 170, 875 164, 868 172, 867 174, 867 176, 866 179, 867 181, 867 183, 868 185, 868 186, 870 187, 871 188, 872 188, 874 188, 876 188, 877 188, 879 187, 880 187, 881 186, 882 186, 883 185, 883 184
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="16"/>
+	</traceGroup>
+</traceGroup>
+</ink>

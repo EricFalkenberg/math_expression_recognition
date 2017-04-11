@@ -1,0 +1,20 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB1457_61834</annotation>
+<trace id="9">
+750 242 355203, 750 242 355218, 750 242 355220, 749 242 355225, 749 242 355233, 748 242 355242, 748 242 355249, 748 243 355257, 748 244 355263, 748 245 355272, 749 247 355280, 749 249 355298, 750 251 355314, 753 256 355331, 755 262 355347, 757 266 355364, 758 269 355380
+</trace>
+<trace id="8">
+717 207 354757, 717 207 354764, 718 206 354772, 718 205 354780, 718 204 354788, 719 202 354799, 719 202 354815, 720 201 354817, 720 200 354832, 720 200 354850, 718 204 354852, 716 211 354866, 713 222 354881, 711 235 354899, 709 249 354916, 708 261 354932, 708 270 354948, 707 273 354966
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="8"/>
+		<traceView traceDataRef="9"/>
+	</traceGroup>
+</traceGroup>
+</ink>

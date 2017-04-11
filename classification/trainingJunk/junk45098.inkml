@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">"200922-947-66.ink"_45098</annotation>
+<trace id="3">
+10517 5844, 10514 5833, 10517 5828, 10517 5816, 10506 5802, 10495 5788, 10478 5772, 10461 5760, 10439 5746, 10419 5741, 10394 5738, 10369 5744, 10341 5758, 10316 5780, 10290 5811, 10268 5847, 10246 5892, 10226 5942, 10215 6001, 10209 6060, 10215 6119, 10229 6169, 10257 6214, 10293 6248, 10346 6270, 10408 6276, 10475 6273, 10537 6259, 10596 6236, 10652 6220, 10694 6197
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="3"/>
+	</traceGroup>
+</traceGroup>
+</ink>

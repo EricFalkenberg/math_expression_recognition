@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">111_user0_1435</annotation>
+<trace id="9">
+360 273, 360 272, 360 276, 359 278, 359 293, 359 295, 359 297, 358 300, 358 302, 358 304, 358 306, 358 307, 357 309, 357 310, 357 311, 357 310, 358 310
+</trace>
+<trace id="10">
+359 302, 359 302, 376 280, 377 279, 378 277, 379 276, 379 275, 380 274, 381 274, 381 275, 381 276
+</trace>
+<trace id="12">
+397 278, 396 278, 399 273, 401 272, 402 272, 403 272, 404 273, 405 273, 406 274, 407 275, 408 276, 409 277, 410 278, 411 279, 412 280, 413 280, 414 281, 416 281, 417 281, 419 281, 421 281, 422 281, 424 280, 425 280, 427 279, 428 279, 429 278, 430 277, 431 276, 432 275, 432 274, 433 274, 433 273, 434 273, 434 272
+</trace>
+<trace id="11">
+365 297, 378 308, 379 309, 380 310, 381 310, 381 311, 382 312, 383 313, 384 313, 384 314
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="9"/>
+		<traceView traceDataRef="10"/>
+		<traceView traceDataRef="11"/>
+		<traceView traceDataRef="12"/>
+	</traceGroup>
+</traceGroup>
+</ink>

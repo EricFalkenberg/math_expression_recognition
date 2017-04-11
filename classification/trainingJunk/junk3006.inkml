@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">65_maira_3006</annotation>
+<trace id="1">
+453 148, 470 131, 475 124, 475 123, 474 122, 473 123, 472 124, 470 125, 468 127, 465 129, 462 132, 460 135, 457 138, 454 142, 452 146, 450 149, 449 153, 449 156, 449 159, 450 162, 452 164, 455 165, 458 165, 463 165, 468 164, 474 163, 479 161, 485 160, 491 158
+</trace>
+<trace id="3">
+543 132, 541 131, 555 130, 560 130, 568 130, 570 131, 572 131, 573 131, 575 131, 577 131, 578 131, 579 131, 581 130
+</trace>
+<trace id="2">
+548 156, 547 156, 551 157, 570 154, 572 154, 573 154, 574 154, 574 153
+</trace>
+<trace id="4">
+627 129, 629 134, 630 158, 630 162, 630 165, 631 169, 631 172, 631 174, 632 175, 632 176, 633 177, 634 177, 635 176
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="1"/>
+		<traceView traceDataRef="2"/>
+		<traceView traceDataRef="3"/>
+		<traceView traceDataRef="4"/>
+	</traceGroup>
+</traceGroup>
+</ink>

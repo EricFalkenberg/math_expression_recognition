@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">81_mijail_4270</annotation>
+<trace id="11">
+714 29, 714 31, 713 32, 710 39, 701 56, 700 57, 700 58, 699 59, 700 58, 700 57, 701 55, 701 54, 702 51, 704 48, 705 45, 706 42, 708 39, 710 36, 712 34, 713 32, 715 30, 716 29, 717 29, 718 29, 719 30, 720 31, 720 33, 720 35, 721 37, 721 40, 721 42, 721 45, 721 48, 721 51, 721 54, 721 56, 720 58, 720 59, 720 61, 720 62, 720 63, 721 62, 722 62, 722 61
+</trace>
+<trace id="10">
+659 37, 655 37, 656 31, 673 29, 674 30, 676 31, 677 32, 677 33, 678 35, 678 36, 677 37, 676 38, 675 39, 674 40, 672 40, 671 41, 669 41, 668 42, 666 42, 665 42, 664 43, 663 43, 663 44, 664 44, 666 45, 667 45, 669 46, 671 47, 673 48, 675 49, 677 50, 679 51, 681 52, 682 53, 683 54, 684 54, 685 55, 686 55, 686 56, 687 56
+</trace>
+<trace id="12">
+702 49, 703 48, 705 48, 706 48, 719 47, 721 47, 722 47
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="10"/>
+		<traceView traceDataRef="11"/>
+		<traceView traceDataRef="12"/>
+	</traceGroup>
+</traceGroup>
+</ink>

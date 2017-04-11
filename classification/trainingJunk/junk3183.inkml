@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">70_maira_3183</annotation>
+<trace id="13">
+815 184, 815 182, 818 179, 818 178, 826 184, 826 185, 826 187, 826 188, 825 189, 824 190, 822 192, 820 193, 818 194, 816 194, 814 195, 813 195, 811 196, 809 196, 808 196, 808 195, 807 195, 807 194, 808 194, 809 193, 810 193, 811 193, 813 193, 814 193, 816 193, 818 194, 820 194, 823 195, 825 195, 827 195, 829 195, 832 194, 834 194, 836 193, 837 192, 838 191
+</trace>
+<trace id="12">
+808 209, 807 207, 786 226, 785 228, 785 230, 786 231, 787 232, 789 233, 791 234, 793 234, 796 234, 799 234, 802 234, 805 233, 808 232, 811 232, 814 231, 816 230, 818 229, 819 228
+</trace>
+<trace id="15">
+869 200, 870 201, 869 216, 869 218, 869 226, 870 227, 871 227
+</trace>
+<trace id="14">
+857 217, 855 217, 877 216, 880 216, 887 214, 889 213, 891 213, 892 212, 893 211, 894 211, 894 210, 893 209
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="12"/>
+		<traceView traceDataRef="13"/>
+		<traceView traceDataRef="14"/>
+		<traceView traceDataRef="15"/>
+	</traceGroup>
+</traceGroup>
+</ink>

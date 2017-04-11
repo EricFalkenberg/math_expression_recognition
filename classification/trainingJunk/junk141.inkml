@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">101_miguel_141</annotation>
+<trace id="11">
+543 102, 563 101, 565 101, 566 101, 568 101, 569 101, 570 100, 571 100, 572 100
+</trace>
+<trace id="13">
+586 102, 585 101, 585 100, 586 101
+</trace>
+<trace id="12">
+581 114, 582 112, 575 129, 576 130, 577 131, 578 132, 579 133, 580 133, 581 132, 582 132, 582 131, 583 131, 584 130, 585 129
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="11"/>
+		<traceView traceDataRef="12"/>
+		<traceView traceDataRef="13"/>
+	</traceGroup>
+</traceGroup>
+</ink>

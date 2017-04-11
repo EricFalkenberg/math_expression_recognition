@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">131_rosario_2863</annotation>
+<trace id="1">
+260 152, 260 152, 263 152, 268 153, 283 153, 284 153, 286 153, 287 153, 288 153, 289 153, 290 153, 291 152
+</trace>
+<trace id="3">
+337 133, 340 129, 343 127, 351 130, 354 136, 355 138, 356 141, 357 144, 358 147, 359 149, 359 152, 360 155, 361 157, 362 160, 363 162, 364 164, 364 165, 365 167, 366 168, 366 169, 367 169, 368 169, 369 169, 369 168
+</trace>
+<trace id="2">
+336 98, 336 97, 333 99, 323 116, 322 119, 321 122, 320 125, 319 129, 319 132, 318 135, 317 138, 317 141, 317 145, 316 148, 316 151, 316 154, 317 157, 317 160, 318 163, 318 166, 319 168, 319 171, 320 173, 321 175, 321 176, 322 178, 322 179, 323 180, 323 181, 324 181, 324 182, 325 182, 324 182, 324 181, 324 180
+</trace>
+<trace id="4">
+366 130, 363 133, 355 148, 353 152, 351 154, 350 156, 349 158, 348 159, 347 161, 346 162, 345 162, 345 163
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="1"/>
+		<traceView traceDataRef="2"/>
+		<traceView traceDataRef="3"/>
+		<traceView traceDataRef="4"/>
+	</traceGroup>
+</traceGroup>
+</ink>

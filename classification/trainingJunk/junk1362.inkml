@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">111_jorge_1362</annotation>
+<trace id="7">
+1245 115, 1245 114, 1212 121, 1219 128, 1228 130, 1231 130, 1234 131, 1241 134, 1243 135, 1244 136, 1246 138, 1245 141, 1244 143, 1242 144, 1241 145, 1238 146, 1236 148, 1231 149, 1228 150, 1225 151, 1223 151, 1221 152, 1219 152, 1217 152, 1216 152, 1215 153, 1214 152, 1215 152, 1216 152
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="7"/>
+	</traceGroup>
+</traceGroup>
+</ink>

@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">127_hirata_2338</annotation>
+<trace id="1">
+513 62
+</trace>
+<trace id="0">
+457 87, 458 87, 458 88, 459 88, 466 114, 466 112, 466 110, 466 108, 466 105, 467 101, 468 98, 469 94, 471 91, 472 89, 474 87, 476 85, 478 85, 480 85, 482 86, 483 87, 485 89, 486 92, 487 94, 488 98, 489 101, 490 104, 491 107, 492 110, 492 113, 493 115, 493 117, 493 119, 493 121, 493 122, 493 124, 493 125, 492 125, 493 126, 493 125, 493 124, 493 123
+</trace>
+<trace id="2">
+513 62, 514 58, 515 58, 516 58, 516 59, 516 60, 517 61, 517 63, 517 65, 518 68, 518 71, 518 75, 518 79, 518 83, 519 87, 519 91, 519 95, 519 98, 519 101, 519 104, 520 106, 520 108, 520 110, 520 112, 520 113, 520 114, 520 116, 520 117, 520 118, 520 119
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="0"/>
+		<traceView traceDataRef="1"/>
+		<traceView traceDataRef="2"/>
+	</traceGroup>
+</traceGroup>
+</ink>

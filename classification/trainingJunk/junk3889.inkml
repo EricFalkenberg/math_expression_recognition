@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">79_lucelia_3889</annotation>
+<trace id="9">
+522 102, 521 99, 521 98, 522 99, 523 114, 523 119, 523 124, 524 124, 524 123, 525 123, 526 122, 527 121, 528 121, 530 120, 532 119, 534 119, 536 119, 537 119, 539 119, 541 120, 542 121, 543 122, 544 123, 544 125, 545 126, 545 128, 544 129, 544 130, 543 131, 542 132, 541 133, 539 134, 537 134, 535 134, 534 133, 532 133, 530 132, 529 131, 526 130, 526 129, 525 129
+</trace>
+<trace id="10">
+555 85, 554 85, 561 85, 562 86, 555 97, 554 97, 553 97, 552 97, 551 96, 550 95, 551 95, 552 96, 553 97, 554 98, 555 99, 556 99, 557 100, 558 100, 559 100, 561 100, 562 100, 563 99, 564 99, 565 99, 566 98, 567 98, 567 99, 567 100, 567 101
+</trace>
+<trace id="11">
+578 121, 577 121, 577 122, 578 122, 592 121, 594 121, 598 120, 597 120, 596 121
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="9"/>
+		<traceView traceDataRef="10"/>
+		<traceView traceDataRef="11"/>
+	</traceGroup>
+</traceGroup>
+</ink>

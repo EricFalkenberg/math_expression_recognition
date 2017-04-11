@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB3115_70828</annotation>
+<trace id="15">
+841 127 222055, 841 129 222126, 842 132 222134, 842 133 222142, 842 137 222151, 842 139 222158, 842 141 222167, 842 145 222174, 843 149 222183, 843 152 222192, 843 155 222199, 844 157 222215, 844 158 222222, 844 159 222238
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="15"/>
+	</traceGroup>
+</traceGroup>
+</ink>

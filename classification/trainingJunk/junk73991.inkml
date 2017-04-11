@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB3572_73991</annotation>
+<trace id="38">
+766 302 598267, 772 300 598385, 774 300 598441
+</trace>
+<trace id="37">
+762 296 597515, 768 296 597537, 770 296 597561
+</trace>
+<trace id="36">
+746 303 596947, 751 305 596969, 752 306 597001, 753 307 597011
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="36"/>
+		<traceView traceDataRef="37"/>
+		<traceView traceDataRef="38"/>
+	</traceGroup>
+</traceGroup>
+</ink>

@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB0216_59280</annotation>
+<trace id="3">
+556 191 85944, 556 193 86010, 556 197 86027, 556 201 86044, 556 207 86060, 556 215 86077, 556 223 86094, 555 230 86110, 555 233 86127, 555 235 86160, 555 236 86261, 555 237 86277, 555 238 86294, 554 239 86310, 554 241 86327, 554 243 86344, 554 244 86360, 554 246 86377, 554 247 86394, 554 248 86411, 554 249 86511, 554 250 86544
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="3"/>
+	</traceGroup>
+</traceGroup>
+</ink>

@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">124_silas_2083</annotation>
+<trace id="19">
+531 216, 528 222, 521 236, 520 237, 520 238, 520 239, 519 239, 519 240, 519 241, 520 241, 520 240, 520 239
+</trace>
+<trace id="20">
+516 220, 517 220, 525 231, 528 235, 529 236
+</trace>
+<trace id="21">
+537 202, 538 208, 539 222, 539 223, 539 222, 539 221, 540 220, 540 219, 540 217, 541 216, 542 215, 543 214, 543 213, 544 212, 545 211, 546 211, 547 211, 548 212, 549 213, 549 214, 549 215, 548 217, 548 218, 548 219, 547 221, 546 222, 546 223, 545 224, 544 225, 543 225, 542 225, 541 224, 540 224, 539 224, 539 223, 538 223
+</trace>
+<trace id="22">
+557 223, 557 222, 558 238, 558 239, 557 239, 557 240, 556 240, 555 240, 555 239, 554 239, 553 239, 553 238, 552 238, 552 237, 552 236
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="19"/>
+		<traceView traceDataRef="20"/>
+		<traceView traceDataRef="21"/>
+		<traceView traceDataRef="22"/>
+	</traceGroup>
+</traceGroup>
+</ink>

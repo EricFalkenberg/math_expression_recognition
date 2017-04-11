@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">98_leo_6093</annotation>
+<trace id="9">
+792 199, 792 198, 792 197, 792 196, 792 197, 792 198, 792 200, 792 202, 792 205, 792 207, 792 213, 792 216, 792 218, 792 220, 792 221, 792 223, 792 224, 791 223, 790 222, 789 221
+</trace>
+<trace id="8">
+792 199
+</trace>
+<trace id="11">
+827 196, 825 219, 824 222, 825 221, 825 220, 826 218, 827 216, 829 215, 830 213, 832 211, 834 210, 836 209, 837 209, 839 209, 841 209, 842 210, 843 211, 844 212, 845 214, 846 215, 846 217, 846 219, 846 221, 846 222, 845 224, 844 226, 842 227, 841 228, 839 230, 837 230, 835 231, 833 232, 831 232, 829 232, 827 232, 825 231, 824 231, 823 231, 822 230, 821 230, 820 230, 819 230, 820 229
+</trace>
+<trace id="10">
+782 213, 781 213, 783 212, 800 210, 799 210
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="8"/>
+		<traceView traceDataRef="9"/>
+		<traceView traceDataRef="10"/>
+		<traceView traceDataRef="11"/>
+	</traceGroup>
+</traceGroup>
+</ink>

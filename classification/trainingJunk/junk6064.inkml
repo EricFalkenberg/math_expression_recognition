@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">98_herbert_6064</annotation>
+<trace id="13">
+715 130, 731 126, 734 127, 736 128, 738 129, 740 131, 741 133, 742 136, 742 138, 742 141, 742 144, 741 147, 740 149, 739 152, 738 154, 736 156, 734 157, 733 159, 731 160, 729 161, 727 162, 725 163, 724 164, 722 164, 721 165, 720 165, 719 164
+</trace>
+<trace id="15">
+797 122, 797 119, 796 127, 797 134, 797 137, 798 140, 798 143, 799 146, 799 148, 800 150, 800 152, 801 153, 801 154, 801 155, 801 154, 801 153, 800 153
+</trace>
+<trace id="14">
+750 103, 748 102, 746 98, 753 98, 755 98, 756 98, 758 99, 759 100, 760 101, 760 102, 761 103, 761 104, 760 105, 760 107, 759 108, 757 109, 756 110, 755 112, 754 113, 753 114, 752 115, 751 115, 750 116, 750 117, 750 118, 751 118, 752 118, 753 118, 754 118, 755 118, 757 118, 759 118, 760 118, 762 118, 763 119, 765 119, 766 119, 767 119, 768 119, 769 119
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="13"/>
+		<traceView traceDataRef="14"/>
+		<traceView traceDataRef="15"/>
+	</traceGroup>
+</traceGroup>
+</ink>

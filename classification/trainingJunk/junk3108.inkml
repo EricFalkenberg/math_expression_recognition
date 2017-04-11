@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">70_edwin_3108</annotation>
+<trace id="2">
+330 117, 332 116, 317 111, 313 112, 311 114, 309 117, 308 121, 308 124, 308 127, 308 128, 310 129, 311 130, 312 130, 313 130, 315 130, 317 129, 318 129, 319 129, 322 129, 324 129, 325 129, 326 130, 327 130, 328 130, 328 131, 329 131, 330 132, 331 132, 332 133, 332 134, 332 135, 332 136, 332 137, 332 138, 332 139, 331 140, 331 141, 330 142, 329 143, 328 144, 327 144, 326 144, 325 145, 323 145, 321 145, 320 145, 318 145, 317 146, 316 146, 314 146, 313 146, 312 145, 311 145
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="2"/>
+	</traceGroup>
+</traceGroup>
+</ink>

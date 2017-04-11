@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB0098_58867</annotation>
+<trace id="17">
+758 400 3148396, 759 401 3148412, 759 403 3148428, 759 404 3148428, 759 406 3148443, 759 407 3148443, 759 408 3148459, 759 409 3148459, 759 411 3148474, 760 413 3148474, 761 415 3148490, 761 416 3148506, 761 417 3148521, 761 418 3148521, 761 419 3148568, 761 420 3148615
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="17"/>
+	</traceGroup>
+</traceGroup>
+</ink>

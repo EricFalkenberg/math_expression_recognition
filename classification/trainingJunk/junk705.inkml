@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">107_miguel_705</annotation>
+<trace id="15">
+797 55, 797 54, 802 83, 801 86, 800 91, 799 97, 798 102, 797 106, 796 109, 795 113, 793 118, 791 124, 789 127, 788 128, 788 129, 787 130, 787 131, 786 131, 787 130, 787 129
+</trace>
+<trace id="14">
+775 80, 775 78, 776 78
+</trace>
+<trace id="17">
+880 89, 881 87, 860 99, 859 100, 859 103, 860 105, 862 107, 865 108, 868 108, 869 108, 872 108, 877 105, 878 104, 880 102, 881 100, 882 98, 883 97, 884 95, 884 93, 885 92, 885 90, 885 89, 884 90, 884 91, 884 92, 883 93, 883 95, 883 96, 883 98, 883 100, 883 101, 883 103, 884 104, 884 106, 885 107, 886 108, 886 109, 887 110, 888 110, 889 110, 890 111, 891 111, 892 110, 893 110
+</trace>
+<trace id="16">
+856 55, 855 54, 834 90, 832 98, 830 105, 830 108, 829 119, 829 122, 830 125, 830 128, 831 131, 832 133, 832 135, 833 137, 834 138, 835 139, 836 140, 838 141, 839 141, 840 141, 841 141, 844 140, 845 139, 846 139
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="14"/>
+		<traceView traceDataRef="15"/>
+		<traceView traceDataRef="16"/>
+		<traceView traceDataRef="17"/>
+	</traceGroup>
+</traceGroup>
+</ink>

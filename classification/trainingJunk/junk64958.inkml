@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB1904_64958</annotation>
+<trace id="8">
+1251 321 9051141, 1253 321 9051156, 1257 321 9051172, 1260 321 9051187, 1265 321 9051203, 1270 321 9051234, 1278 321 9051234, 1285 321 9051250, 1290 321 9051250, 1294 321 9051266, 1297 321 9051266, 1299 321 9051281, 1300 320 9051281, 1301 319 9051297, 1303 319 9051297, 1303 318 9051312, 1304 318 9051312, 1305 318 9051328, 1306 318 9051344
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="8"/>
+	</traceGroup>
+</traceGroup>
+</ink>

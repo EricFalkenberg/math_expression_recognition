@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">126_alfonso_2106</annotation>
+<trace id="3">
+341 133, 340 134, 367 132, 368 132, 369 132, 370 132, 371 132, 372 132
+</trace>
+<trace id="5">
+393 87, 394 83, 396 80, 398 79, 407 76, 415 75, 426 75, 430 75, 433 75, 436 76, 439 77, 441 77, 444 78, 446 79, 447 80, 449 81, 449 82, 450 83, 449 85, 448 86, 446 88, 444 90, 441 91, 438 93, 435 94, 432 96, 429 97, 426 98, 424 99, 421 100, 419 101, 418 101, 416 101, 415 102, 414 102
+</trace>
+<trace id="4">
+408 87, 408 89, 410 107, 410 122, 410 124, 411 125, 411 126
+</trace>
+<trace id="6">
+460 115, 459 113, 460 110, 461 110, 464 113, 466 119, 466 121, 466 122, 466 124, 465 125, 465 126, 465 127, 465 128, 464 129, 464 127, 464 126, 465 125, 465 124, 466 122, 467 120, 468 118, 469 116, 470 115, 471 113, 472 112, 474 112, 475 111, 476 112, 477 112, 478 113, 478 115, 479 117, 480 118, 480 120, 480 122, 480 124, 480 126, 479 128, 479 129, 479 130, 479 131, 479 132, 479 133, 479 132, 479 131
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="3"/>
+		<traceView traceDataRef="4"/>
+		<traceView traceDataRef="5"/>
+		<traceView traceDataRef="6"/>
+	</traceGroup>
+</traceGroup>
+</ink>

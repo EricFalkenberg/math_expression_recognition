@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">108_Willian_921</annotation>
+<trace id="3">
+199 107, 201 106, 200 104, 199 104, 194 105, 194 106, 193 106, 191 112, 192 119, 193 120, 194 120, 195 120, 196 121, 197 121, 199 121, 200 121, 201 120, 202 120, 203 120, 204 119, 205 119, 204 120
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="3"/>
+	</traceGroup>
+</traceGroup>
+</ink>

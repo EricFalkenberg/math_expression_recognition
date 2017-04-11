@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">126_alfonso_2105</annotation>
+<trace id="24">
+801 222, 801 221, 807 215, 808 214, 808 213, 808 214, 808 215, 808 216, 808 217, 808 218, 808 220, 807 221, 807 222, 807 223, 807 225, 807 226, 807 227, 808 227, 808 228, 808 229, 808 230, 807 230, 806 230, 805 230, 804 230, 804 231, 803 231, 802 231, 801 231, 801 232, 802 232, 803 231, 804 231, 805 231, 806 231, 808 231, 809 231, 810 231, 811 231, 813 231, 814 230, 815 230, 816 230, 817 230, 818 230, 818 231
+</trace>
+<trace id="21">
+755 215, 756 215, 759 222, 758 229, 758 228, 758 227, 758 226, 759 224, 759 223, 759 221, 760 220, 761 218, 761 217, 762 216, 763 215, 764 215, 764 214, 765 214, 766 214, 767 214, 768 215, 768 216, 769 217, 769 218, 769 219, 769 221, 769 222, 769 224, 769 225, 769 226, 769 227, 769 226
+</trace>
+<trace id="22">
+776 223, 775 223, 791 220, 793 220, 792 220
+</trace>
+<trace id="23">
+782 216, 781 214, 782 220, 782 224, 782 230, 782 229
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="21"/>
+		<traceView traceDataRef="22"/>
+		<traceView traceDataRef="23"/>
+		<traceView traceDataRef="24"/>
+	</traceGroup>
+</traceGroup>
+</ink>

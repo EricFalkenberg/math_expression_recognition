@@ -1,0 +1,24 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">89_edwin_4732</annotation>
+<trace id="8">
+445 118, 442 118, 438 132, 440 134, 442 135, 443 136, 444 136, 447 135, 450 133, 452 131, 455 128, 455 126, 456 125, 456 124, 456 122, 456 121, 456 120, 455 118, 454 117, 454 116, 453 116, 451 116, 450 116, 449 116, 448 117, 447 118, 446 118, 446 119
+</trace>
+<trace id="7">
+419 116, 420 116, 411 117, 405 125, 405 127, 405 130, 406 131, 408 135, 410 136, 412 137, 413 137, 416 137, 420 137, 421 137, 422 137, 423 137, 424 136, 425 136, 426 137
+</trace>
+<trace id="6">
+346 114, 357 118, 358 122, 359 124, 360 126, 362 131, 363 134, 364 136, 365 137, 366 137, 368 138, 369 136, 370 136, 371 134, 372 133, 373 132
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="6"/>
+		<traceView traceDataRef="7"/>
+		<traceView traceDataRef="8"/>
+	</traceGroup>
+</traceGroup>
+</ink>

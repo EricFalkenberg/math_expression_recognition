@@ -1,0 +1,16 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB3020_70053</annotation>
+<trace id="11">
+550 305 802643, 550 307 802693, 550 308 802703, 550 311 802713, 550 313 802723, 549 315 802733, 549 317 802743, 549 319 802753, 549 320 802763, 549 321 802773, 549 322 802793, 549 323 802813
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="11"/>
+	</traceGroup>
+</traceGroup>
+</ink>

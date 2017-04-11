@@ -1,0 +1,28 @@
+<ink xmlns="http://www.w3.org/2003/InkML">
+<traceFormat>
+<channel name="X" type="decimal"/>
+<channel name="Y" type="decimal"/>
+</traceFormat><annotation type="truth"></annotation>
+<annotation type="UI">MfrDB1265_61013</annotation>
+<trace id="13">
+515 304, 516 304, 517 304, 518 304, 520 305, 523 306, 527 306, 532 307, 536 308, 538 308, 541 308, 544 308, 546 308, 548 308, 549 308
+</trace>
+<trace id="15">
+597 279, 597 278, 598 278, 599 276, 600 275, 601 273, 603 271, 605 268, 607 265, 609 262, 611 260, 613 257, 614 255, 615 254, 616 253, 617 252, 617 253, 617 254, 617 256, 617 258, 617 260, 617 262, 617 264, 616 269, 615 272, 615 277, 614 280, 614 283, 614 285, 613 287, 612 288, 612 289, 612 290, 612 292, 612 293, 611 295, 611 297, 611 298
+</trace>
+<trace id="14">
+517 322, 518 322, 520 322, 522 322, 524 322, 528 322, 531 322, 534 322, 536 322, 538 322, 539 322, 542 322, 543 322, 545 322, 546 322, 547 322, 548 322, 549 322, 550 322
+</trace>
+<trace id="16">
+585 311, 587 311, 590 311, 591 311, 595 311, 597 312, 600 312, 604 313, 606 314, 610 314, 613 314, 618 314, 621 314, 623 314, 627 314, 628 314, 630 314, 631 314, 632 314
+</trace>
+<traceGroup>
+	<traceGroup xml:id="0">
+		<annotation type="truth"></annotation>
+		<traceView traceDataRef="13"/>
+		<traceView traceDataRef="14"/>
+		<traceView traceDataRef="15"/>
+		<traceView traceDataRef="16"/>
+	</traceGroup>
+</traceGroup>
+</ink>
