@@ -262,7 +262,7 @@ def calc_curvature(stroke_data):
     return new_map
 
 
-def extract_features(fname):
+def extract_features(fname, time_series=False):
     X, Y = load_data(fname)
     class_map = dict(zip(X, Y))
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
@@ -281,11 +281,15 @@ def extract_features(fname):
         idx = 0
         for key, sample in ndtse.items():
             ndtse[key] = flatten(sample)
-            norm_y[key] = flatten(sample)
-            alpha[key] = flatten(sample)
-            beta[key] = flatten(sample)
+            norm_y[key] = flatten(norm_y[key])
+            alpha[key] = flatten(alpha[key])
+            beta[key] = flatten(beta[key])
             if ndtse[key] != []:
                 names.append([key,class_map[key]]) 
-                dataset.append((ndtse[key][:55]+norm_y[key][:55]+alpha[key][:55]+beta[key][:55]))
+                if time_series:
+                    sample = [[ndtse[key][i], norm_y[key][i], alpha[key][i], beta[key][i]] for i in range(55)]
+                    dataset.append(sample) 
+                else:
+                    dataset.append((ndtse[key][:55]+norm_y[key][:55]+alpha[key][:55]+beta[key][:55]))
         return names, dataset
 

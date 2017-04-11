@@ -31,7 +31,8 @@ if __name__ == '__main__':
     parser.add_argument('classes', **arg_classes)
     args = parser.parse_args()
 
-    gt, features = extract_features(args.dataset[0])
+    gt, features = extract_features(args.dataset[0], time_series=True)
+    print features[0]
     c = classifier(features, gt, hmm_model)
 
 
