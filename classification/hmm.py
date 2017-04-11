@@ -38,9 +38,7 @@ if __name__ == '__main__':
         model = hmm.GMMHMM(n_components=NUM_STATES, n_mix=NUM_GAUSSIANS, covariance_type="diag")
         model.startprob_ = np.array([1, 0, 0, 0, 0, 0])
         model.transmat_  = np.array([[ 1.0/NUM_STATES ] * NUM_STATES ] * NUM_STATES)
-        model.means_     = np.array([0] * NUM_STATES)
-        print(model.transmat_)
-        print(len(model.transmat_))
+        #model.means_     = np.array([0] * NUM_STATES)
         #gt, features = extract_features(args.dataset[0])
         hmmMap[c] = model#trainModel(model, features)
 

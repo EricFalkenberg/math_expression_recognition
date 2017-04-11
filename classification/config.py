@@ -10,6 +10,14 @@ kdtree_model = {
     'metric' : 'minkowski'
 }
 
+## HMM Specific Configuration
+hmm_model_meta = {
+    'program_description': """
+                           Classify isolated handwritten math symbols with a k-d tree implementation of
+                           the 1-NN algorithm.
+                           """
+}
+
 ## General Configuration
 arg_dataset = {
     'metavar' : 'f',
