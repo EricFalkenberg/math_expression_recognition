@@ -28,7 +28,7 @@ hmm_meta = {
                       '\\sigma', '\\sin', '\\sqrt', '\\sum', '\\tan', '\\theta', '\\times',
                       '\\{', '\\}', ']', 'a', 'b', 'c', 'd', 'e', 'f', 'g','h', 'i',
                       'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
-                      'v', 'w', 'x', 'y', 'z', '|'],
+                      'v', 'w', 'x', 'y', 'z', '|', 'junk'],
     'num_features' : [4 for _ in range(55)]
 }
 hmm_model = {
