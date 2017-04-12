@@ -6,10 +6,19 @@ import numpy as np
 
 class classifier:
 
-    def __init__(this, X, Y, config):
+    def __init__(this, X, Y, config, model_file=None):
         this.X = X
         this.Y = Y
-        this.tree = KDTree(X, **config)
+        if model_file != None:
+            with gzip.open(model_file) as f:
+                this.tree = cPickle.load(f)
+        else:
+            this.tree = KDTree(X, **config)
+            this.save_model("models/kd_tree.model")
+
+    def save_model(this, fname):
+        with gzip.open(fname, 'wb') as f:
+            cPickle.dump(this.tree, f, -1)
 
     def evaluate_model(this, samples, targets):
         correct, incorrect = 0, 0
