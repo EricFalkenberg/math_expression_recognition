@@ -267,6 +267,7 @@ def extract_features(fname, time_series=False):
     class_map = dict(zip(X, Y))
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
     names   = []
+    dataset = [] 
     for directory in dirs:
         raw_stroke_data = retrieve_stroke_data(X, directory, dataset_meta) 
         norm_stroke_data = normalize_coords(raw_stroke_data)
@@ -277,7 +278,6 @@ def extract_features(fname, time_series=False):
         alpha   = calc_vicinity_slope(repositioned_stroke_data)
         beta    = calc_curvature(repositioned_stroke_data)
         flatten = lambda l: [item for sublist in l for item in sublist]
-        dataset = [] 
         idx = 0
         for key, sample in ndtse.items():
             ndtse[key] = flatten(sample)
@@ -287,12 +287,9 @@ def extract_features(fname, time_series=False):
             if ndtse[key] != []:
                 if time_series:
                     for i in range(55):
-                        if class_map[key] == '\\lambda':
-                            print "LAMBDA"
                         names.append([key,class_map[key]]) 
-                        
                         dataset.append([ndtse[key][i], norm_y[key][i], alpha[key][i], beta[key][i]])
                 else:
                     names.append([key,class_map[key]]) 
                     dataset.append((ndtse[key][:55]+norm_y[key][:55]+alpha[key][:55]+beta[key][:55]))
-        return names, dataset
+    return names, dataset
