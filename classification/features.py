@@ -212,7 +212,7 @@ def calc_vicinity_slope(stroke_data):
                     angle = np.arcsin(dx / distance(last_points, future_points))
                 else:
                     angle = 0
-                st.append(angle+90)
+                st.append(angle+(np.pi/2))
             np1 = 0
             np0 = 0
             new_strokes.append([p0, p1] + st + [np1, np0])
@@ -252,7 +252,7 @@ def calc_curvature(stroke_data):
                     angle2 = np.arcsin(dx2 / d2)
                 else:
                     angle2 = 0
-                st.append(180-angle1-angle2)
+                st.append(np.pi-angle1-angle2)
             np1 = 0
             np0 = 0
             new_strokes.append([p0, p1] + st + [np1, np0])
@@ -285,11 +285,14 @@ def extract_features(fname, time_series=False):
             alpha[key] = flatten(alpha[key])
             beta[key] = flatten(beta[key])
             if ndtse[key] != []:
-                names.append([key,class_map[key]]) 
                 if time_series:
-                    sample = [[ndtse[key][i], norm_y[key][i], alpha[key][i], beta[key][i]] for i in range(55)]
-                    dataset.append(sample) 
+                    for i in range(55):
+                        if class_map[key] == '\\lambda':
+                            print "LAMBDA"
+                        names.append([key,class_map[key]]) 
+                        
+                        dataset.append([ndtse[key][i], norm_y[key][i], alpha[key][i], beta[key][i]])
                 else:
+                    names.append([key,class_map[key]]) 
                     dataset.append((ndtse[key][:55]+norm_y[key][:55]+alpha[key][:55]+beta[key][:55]))
         return names, dataset
-

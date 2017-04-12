@@ -28,19 +28,12 @@ hmm_meta = {
                       '\\sigma', '\\sin', '\\sqrt', '\\sum', '\\tan', '\\theta', '\\times',
                       '\\{', '\\}', ']', 'a', 'b', 'c', 'd', 'e', 'f', 'g','h', 'i',
                       'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
-                      'v', 'w', 'x', 'y', 'z', '|']
+                      'v', 'w', 'x', 'y', 'z', '|'],
+    'num_features' : [4 for _ in range(55)]
 }
 hmm_model = {
     'n_components': 6,
-    'n_mix' : 5,
-    'covariance_type' : 'diag',
-    'startprob_prior' : [1, 0, 0, 0, 0, 0],
-    'transmat_prior'  : [[0.5, 0.5, 0.0, 0.0, 0.0, 0.0],
-                         [0.0, 0.5, 0.5, 0.0, 0.0, 0.0],
-                         [0.0, 0.0, 0.5, 0.5, 0.0, 0.0],
-                         [0.0, 0.0, 0.0, 0.5, 0.5, 0.0],
-                         [0.0, 0.0, 0.0, 0.0, 0.5, 0.5],
-                         [0.0, 0.0, 0.0, 0.0, 0.0, 1.0]]
+    'n_mix' : 5
 }
 
 ## General Configuration
