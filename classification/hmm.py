@@ -1,3 +1,4 @@
+import csv
 import logging
 import progressbar
 logging.captureWarnings(True)
@@ -12,7 +13,12 @@ from features import extract_features
 
 class classifier:
 
-    def __init__(this, X, Y, config):
+    def __init__(this, X, Y, config, model_file=None):
+        if model_file != None:
+            with gzip.open(model_file) as f:
+                this.models = cPickle.load(f)
+            return
+
         segmented_data = {}
         for target, feature in zip(Y, X):
             t = target[1]
@@ -40,37 +46,54 @@ class classifier:
                 abstained += 1
             progress.update(curr)
             curr += 1
-        this.models = hmm_map
-
         print "%d/%d models created" % (created, created+abstained)
-        with gzip.open("hmm.model", 'wb') as f:
+        this.models = hmm_map
+        this.save_model("models/hmm.model")
+
+    def save_model(this, fname):
+        with gzip.open(fname, 'wb') as f:
             cPickle.dump(this.models, f, -1)
 
     def evaluate_model(this, samples, targets):
+        print "Evaluating model"
+        num_points = len(samples)/55 
+        progress = progressbar.ProgressBar(max_value=num_points)
+        curr = 0
         buff = []
         curr_target = None
         correct, incorrect = 0, 0
-        for idx, sample, target in zip(range(len(samples)), samples, targets):
-            if idx % 55 == 0:
-                p_target = this.predict(buff)
-                if p_target == curr_target:
-                    correct += 1
-                else:
-                    incorrect += 1 
-                buff = []
-            buff.append(sample)
-            curr_target = target[1]
+        with open('evals/hmm_out.csv', 'wb') as f:
+            csvwriter = csv.writer(f)
+            for idx, sample, target in zip(range(len(samples)), samples, targets):
+                if idx % 55 == 0 and buff != []:
+                    p_target = this.predict(buff)
+                    if p_target == curr_target[1]:
+                        correct += 1
+                    else:
+                        incorrect += 1 
+                    csvwriter.writerow([curr_target[0], p_target])
+                    buff = []
+                    progress.update(curr)
+                    curr += 1
+                buff.append(sample)
+                curr_target = target
+        print "ACCURACY: %.2f" % (float(correct) / float(correct+incorrect))
         
              
     def predict(this, sample):
-        best = -1
+        best = None
         b_class = None
         for target, model in this.models.items():
-            if model.predict(sample) > best:
-                best = model.predict(sample, 55)
+            if model == None:
+                continue
+            score = model.score(sample, [55])
+            if score > best or best == None:
+                best = score 
                 b_class = target
         return b_class
     
+def from_model(fname):
+    return classifier(None, None, None, fname)
 
 if __name__ == '__main__':
     ## Parse command line arguments
@@ -80,4 +103,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     gt, features = extract_features(args.dataset[0], time_series=True)
-    c = classifier(features, gt, hmm_model)
+    c = classifier(features, gt, hmm_model) 
+    #c = from_model("models/hmm.model") 
+    #gt, features = extract_features("tmp/real-test.csv", time_series=True)
+    #c.evaluate_model(features, gt)
+
