@@ -7,7 +7,7 @@ import numpy as np
 import cPickle
 import gzip
 from hmmlearn import hmm
-from config import hmm_meta, hmm_model, arg_dataset, arg_classes
+from config import hmm_meta, hmm_model, arg_command, arg_dataset, arg_classes
 from features import extract_features
 
 
@@ -83,14 +83,17 @@ class classifier:
     def predict(this, sample):
         best = None
         b_class = None
-        for target, model in this.models.items():
-            if model == None:
-                continue
-            score = model.score(sample, [55])
-            if score > best or best == None:
-                best = score 
-                b_class = target
-        return b_class
+        score_class = [(model.score(sample, [55]), target) for target, model in this.models.items()]
+        score_class = sorted(score_class)
+        return [i[1] for i in score_class]
+        #for target, model in this.models.items():
+        #    if model == None:
+        #        continue
+        #    score = model.score(sample, [55])
+        #    if score > best or best == None:
+        #        best = score 
+        #        b_class = target
+        #return b_class
     
 def from_model(fname):
     return classifier(None, None, None, fname)
@@ -107,7 +110,7 @@ if __name__ == '__main__':
         gt, features = extract_features(args.dataset[0])
         c = classifier(features, gt, hmm_model)   
     elif args.command[0] == "test":
-        c = from_model("models/kd_tree.model")
+        c = from_model("models/hmm.model")
         gt, test_f   = extract_features(args.dataset[0])
         c.evaluate_model(test_f, gt)
 

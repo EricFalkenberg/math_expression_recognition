@@ -1,3 +1,4 @@
+import csv
 import argparse
 import gzip
 import cPickle
@@ -19,7 +20,7 @@ class classifier:
 
     def save_model(this, fname):
         with gzip.open(fname, 'wb') as f:
-            cPickle.dump([this.tree, this.model], f, -1)
+            cPickle.dump([this.tree, this.Y], f, -1)
 
     def evaluate_model(this, samples, targets):
         correct, incorrect = 0, 0
