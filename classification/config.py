@@ -37,6 +37,13 @@ hmm_model = {
 }
 
 ## General Configuration
+arg_command = {
+    'metavar' : 'cmd',
+    'type'  : str,
+    'nargs' : 1,
+    'help'  : 'Whether to test or train the model',
+    'choices' : ['train', 'test']
+}
 arg_dataset = {
     'metavar' : 'f',
     'type'  : str,
