@@ -98,13 +98,16 @@ def from_model(fname):
 if __name__ == '__main__':
     ## Parse command line arguments
     parser = argparse.ArgumentParser(description=hmm_meta['program_description'])
+    parser.add_argument('command', **arg_command)
     parser.add_argument('dataset', **arg_dataset)
     parser.add_argument('classes', **arg_classes)
     args = parser.parse_args()
 
-    gt, features = extract_features(args.dataset[0], time_series=True)
-    c = classifier(features, gt, hmm_model) 
-    #c = from_model("models/hmm.model") 
-    #gt, features = extract_features("tmp/real-test.csv", time_series=True)
-    #c.evaluate_model(features, gt)
+    if args.command[0] == "train":
+        gt, features = extract_features(args.dataset[0])
+        c = classifier(features, gt, hmm_model)   
+    elif args.command[0] == "test":
+        c = from_model("models/kd_tree.model")
+        gt, test_f   = extract_features(args.dataset[0])
+        c.evaluate_model(test_f, gt)
 
