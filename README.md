@@ -53,3 +53,11 @@ to see our models in action.
 ## Dataset
 The program currently expects the `trainingSymbols/` and `trainingJunk/` to reside under `dataset/`.
 To change this behavior, edit the location attribute of the dataset_meta dictionary in `config.py`.
+
+## Libraries
+This project uses the following libraries.
+1. sklearn
+2. hmmlearn
+3. progressbar2
+4. numpy
+5. scipy
