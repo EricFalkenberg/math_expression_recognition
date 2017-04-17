@@ -96,4 +96,5 @@ if __name__ == '__main__':
         c = classifier(features, gt, hmm_model)
     if cmd == "test":
         c = classifier(None, None, None, "models/hmm.model") 
+        gt, features = extract_features(args.dataset[0], time_series=True)
         c.evaluate_model(features, gt)
