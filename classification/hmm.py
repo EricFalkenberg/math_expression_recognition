@@ -33,12 +33,24 @@ class classifier:
 
         print "Training HMM Class Models"
         for target in hmm_meta['class_names']:
-            model = hmm.GMMHMM(**config)
             if target in segmented_data :
+                model = hmm.GMMHMM(**config)
+                model.startprob_ = np.array([1.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+                model.transmat_  = np.array([[0.5, 0.5, 0.0, 0.0, 0.0, 0.0],
+                                             [0.0, 0.5, 0.5, 0.0, 0.0, 0.0],
+                                             [0.0, 0.0, 0.5, 0.5, 0.0, 0.0],
+                                             [0.0, 0.0, 0.0, 0.5, 0.5, 0.0],
+                                             [0.0, 0.0, 0.0, 0.0, 0.5, 0.5],
+                                             [0.0, 0.0, 0.0, 0.0, 0.0, 1.0]])
                 lengths = [55 for _ in range(len(segmented_data[target])/55)]
-                model = model.fit(segmented_data[target])
-                hmm_map[target] = model
-                created += 1
+                print len(lengths)
+                if len(lengths) >= 5:
+                    model = model.fit(segmented_data[target])
+                    hmm_map[target] = model
+                    created += 1
+                else:
+                    hmm_map[target] = None
+                    abstained += 1
             else:
                 hmm_map[target] = None
                 abstained += 1
@@ -51,6 +63,8 @@ class classifier:
             cPickle.dump(this.models, f, -1)
 
     def evaluate_model(this, samples, targets):
+        progress = progressbar.ProgressBar(max_value=len(samples))
+        curr = 0
         buff = []
         curr_target = None
         correct, incorrect = 0, 0
@@ -64,6 +78,8 @@ class classifier:
                 buff = []
             buff.append(sample)
             curr_target = target[1]
+            progress.update(curr)
+            curr += 1
         print "CLASSIFICATION: %.4f" % (float(correct) / float(correct+incorrect))
         
              
@@ -73,6 +89,8 @@ class classifier:
         for target, model in this.models.items():
             if model == None:
                 continue
+            print target, model.startprob_
+            print model.monitor_.converged
             score = model.score(sample, [55])
             if score > best:
                 best = score

@@ -147,6 +147,9 @@ def retrieve_stroke_data(X, directory, config):
         progress.update(curr)
         curr += 1
     progress.update(curr)
+    for i in X:
+        if i not in trace_map:
+            print i
     return {i:trace_map[i] for i in X if i in trace_map}
 
 def calc_ndtse(stroke_data):
@@ -264,6 +267,7 @@ def calc_curvature(stroke_data):
 
 def extract_features(fname, time_series=False):
     X, Y = load_data(fname)
+    print "NUM POINTS: %d" % len(X)
     class_map = dict(zip(X, Y))
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
     names   = []
@@ -273,6 +277,7 @@ def extract_features(fname, time_series=False):
         norm_stroke_data = normalize_coords(raw_stroke_data)
         smoothed_stroke_data = smooth_xy_points(norm_stroke_data)
         repositioned_stroke_data = reposition_xy_points(smoothed_stroke_data)
+        print "NUM POINTS AFTER PROCESSING: %d" % len(repositioned_stroke_data)
         ndtse   = calc_ndtse(repositioned_stroke_data)
         norm_y  = get_norm_y(repositioned_stroke_data) 
         alpha   = calc_vicinity_slope(repositioned_stroke_data)
@@ -292,4 +297,4 @@ def extract_features(fname, time_series=False):
                 else:
                     names.append([key,class_map[key]]) 
                     dataset.append((ndtse[key][:55]+norm_y[key][:55]+alpha[key][:55]+beta[key][:55]))
-    return names, dataset
+        return names, dataset
