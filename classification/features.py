@@ -143,13 +143,12 @@ def retrieve_stroke_data(X, directory, config):
             annotations = root.findall(config['xml_name_tag'])       
             loc = annotations[1].text
             trace = root.findall(config['xml_trace_tag'])
-            trace_map[loc] = map(extract_xy_data, (stroke.text for stroke in trace))
+            tmp = map(extract_xy_data, (stroke.text for stroke in trace))
+            if not (any([len(i)<2 for i in tmp]) or len(tmp) < 1):
+                 trace_map[loc] = map(extract_xy_data, (stroke.text for stroke in trace))
         progress.update(curr)
         curr += 1
     progress.update(curr)
-    for i in X:
-        if i not in trace_map:
-            print i
     return {i:trace_map[i] for i in X if i in trace_map}
 
 def calc_ndtse(stroke_data):
@@ -267,21 +266,19 @@ def calc_curvature(stroke_data):
 
 def extract_features(fname, time_series=False):
     X, Y = load_data(fname)
-    print "NUM POINTS: %d" % len(X)
     class_map = dict(zip(X, Y))
     dirs = ["%s/trainingSymbols/", "%s/trainingJunk/"]
     names   = []
     dataset = [] 
     for directory in dirs:
         raw_stroke_data = retrieve_stroke_data(X, directory, dataset_meta) 
-        norm_stroke_data = normalize_coords(raw_stroke_data)
-        smoothed_stroke_data = smooth_xy_points(norm_stroke_data)
+        smoothed_stroke_data = smooth_xy_points(raw_stroke_data)
         repositioned_stroke_data = reposition_xy_points(smoothed_stroke_data)
-        print "NUM POINTS AFTER PROCESSING: %d" % len(repositioned_stroke_data)
-        ndtse   = calc_ndtse(repositioned_stroke_data)
-        norm_y  = get_norm_y(repositioned_stroke_data) 
-        alpha   = calc_vicinity_slope(repositioned_stroke_data)
-        beta    = calc_curvature(repositioned_stroke_data)
+        norm_stroke_data = normalize_coords(repositioned_stroke_data)
+        ndtse   = calc_ndtse(norm_stroke_data)
+        norm_y  = get_norm_y(norm_stroke_data) 
+        alpha   = calc_vicinity_slope(norm_stroke_data)
+        beta    = calc_curvature(norm_stroke_data)
         flatten = lambda l: [item for sublist in l for item in sublist]
         idx = 0
         for key, sample in ndtse.items():

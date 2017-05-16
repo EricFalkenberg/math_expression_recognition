@@ -5,7 +5,7 @@ import argparse
 import numpy as np
 import cPickle
 import gzip
-from hmmlearn import hmm
+from sklearn.ensemble import RandomForestClassifier
 from config import hmm_meta, hmm_model, arg_command, arg_dataset, arg_classes
 from features import extract_features
 
@@ -13,90 +13,35 @@ from features import extract_features
 class classifier:
 
     def __init__(this, X, Y, config, model_name=None):
+        class_num_map = dict()
+        idx = 0
+        for c in hmm_meta['class_names']:
+            if c not in class_num_map:
+                class_num_map[c] = idx
+                idx += 1
+        this.class_num_map = class_num_map
+        this.num_class_map = { v:k for k,v in class_num_map.items() }
+
         if model_name != None:
             with gzip.open(model_name) as f:
-                this.models = cPickle.load(f)
+                this.model = cPickle.load(f)
             return
-        segmented_data = {}
-        for target, feature in zip(Y, X):
-            t = target[1]
-            if t not in segmented_data:
-                segmented_data[t] = []
-            segmented_data[t].append(feature)
 
-        hmm_map = {}
-        num_points = len(hmm_meta['class_names']) 
-        progress = progressbar.ProgressBar(max_value=num_points)
-        curr = 0
-        created = 0
-        abstained = 0
+        model = RandomForestClassifier(n_estimators=150)
+        y = []
+        for target in Y:
+            y.append(class_num_map[target[1]])
+        
+        model.fit(X, y)
 
-        print "Training HMM Class Models"
-        for target in hmm_meta['class_names']:
-            if target in segmented_data :
-                model = hmm.GMMHMM(**config)
-                model.startprob_ = np.array([1.0, 0.0, 0.0, 0.0, 0.0, 0.0])
-                model.transmat_  = np.array([[0.5, 0.5, 0.0, 0.0, 0.0, 0.0],
-                                             [0.0, 0.5, 0.5, 0.0, 0.0, 0.0],
-                                             [0.0, 0.0, 0.5, 0.5, 0.0, 0.0],
-                                             [0.0, 0.0, 0.0, 0.5, 0.5, 0.0],
-                                             [0.0, 0.0, 0.0, 0.0, 0.5, 0.5],
-                                             [0.0, 0.0, 0.0, 0.0, 0.0, 1.0]])
-                lengths = [55 for _ in range(len(segmented_data[target])/55)]
-                print len(lengths)
-                if len(lengths) >= 5:
-                    model = model.fit(segmented_data[target])
-                    hmm_map[target] = model
-                    created += 1
-                else:
-                    hmm_map[target] = None
-                    abstained += 1
-            else:
-                hmm_map[target] = None
-                abstained += 1
-            progress.update(curr)
-            curr += 1
-        this.models = hmm_map
-
-        print "%d/%d models created" % (created, created+abstained)
         with gzip.open("models/hmm.model", 'wb') as f:
-            cPickle.dump(this.models, f, -1)
+            cPickle.dump(model, f, -1)
 
     def evaluate_model(this, samples, targets):
-        progress = progressbar.ProgressBar(max_value=len(samples))
-        curr = 0
-        buff = []
-        curr_target = None
-        correct, incorrect = 0, 0
-        for idx, sample, target in zip(range(len(samples)), samples, targets):
-            if idx % 55 == 0 and buff != []:
-                p_target = this.predict(buff)
-                if p_target == curr_target:
-                    correct += 1
-                else:
-                    incorrect += 1 
-                buff = []
-            buff.append(sample)
-            curr_target = target[1]
-            progress.update(curr)
-            curr += 1
-        print "CLASSIFICATION: %.4f" % (float(correct) / float(correct+incorrect))
-        
+        predictions = this.model.predict(samples)
+        for t, p in zip(targets, predictions):
+            print "%s, %s" % (t[0], this.num_class_map[p])
              
-    def predict(this, sample):
-        best = -1
-        b_class = None
-        for target, model in this.models.items():
-            if model == None:
-                continue
-            print target, model.startprob_
-            print model.monitor_.converged
-            score = model.score(sample, [55])
-            if score > best:
-                best = score
-                b_class = target
-        return b_class
-    
 
 if __name__ == '__main__':
     ## Parse command line arguments
@@ -110,9 +55,9 @@ if __name__ == '__main__':
     dataset = args.dataset[0]
     
     if cmd == "train":
-        gt, features = extract_features(args.dataset[0], time_series=True)
+        gt, features = extract_features(args.dataset[0])
         c = classifier(features, gt, hmm_model)
     if cmd == "test":
         c = classifier(None, None, None, "models/hmm.model") 
-        gt, features = extract_features(args.dataset[0], time_series=True)
+        gt, features = extract_features(args.dataset[0])
         c.evaluate_model(features, gt)
