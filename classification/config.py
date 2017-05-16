@@ -13,7 +13,7 @@ kdtree_model = {
 }
 
 ## HMM Specific Configuration
-hmm_meta = {
+random_forest_meta = {
     'program_description': """
                            Classify isolated handwritten math symbols with an HMM.
                            """,
@@ -30,7 +30,7 @@ hmm_meta = {
                       'v', 'w', 'x', 'y', 'z', '|', 'junk'],
     'num_features' : [4 for _ in range(55)]
 }
-hmm_model = {
+random_forest_model = {
     'n_components': 6,
     'n_mix' : 5
 }

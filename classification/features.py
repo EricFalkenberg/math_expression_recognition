@@ -95,7 +95,7 @@ def reposition_xy_points(stroke_data):
         for stroke, percentage, length in zip(value, percentages, segments_length):
             # Determine the number of points to place on the current stroke
             st = stroke
-            points_to_place = np.round(percentage*60)
+            points_to_place = np.round(percentage*100)
             if points_to_place == 0:
                 continue
             points_placed = 1
@@ -293,5 +293,5 @@ def extract_features(fname, time_series=False):
                         dataset.append([ndtse[key][i], norm_y[key][i], alpha[key][i], beta[key][i]])
                 else:
                     names.append([key,class_map[key]]) 
-                    dataset.append((ndtse[key][:55]+norm_y[key][:55]+alpha[key][:55]+beta[key][:55]))
+                    dataset.append((ndtse[key][:98]+norm_y[key][:98]+alpha[key][:98]+beta[key][:98]))
         return names, dataset

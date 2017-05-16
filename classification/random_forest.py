@@ -6,7 +6,7 @@ import numpy as np
 import cPickle
 import gzip
 from sklearn.ensemble import RandomForestClassifier
-from config import hmm_meta, hmm_model, arg_command, arg_dataset, arg_classes
+from config import random_forest_meta, random_forest_model, arg_command, arg_dataset, arg_classes
 from features import extract_features
 
 
@@ -15,7 +15,7 @@ class classifier:
     def __init__(this, X, Y, config, model_name=None):
         class_num_map = dict()
         idx = 0
-        for c in hmm_meta['class_names']:
+        for c in random_forest_meta['class_names']:
             if c not in class_num_map:
                 class_num_map[c] = idx
                 idx += 1
@@ -27,14 +27,14 @@ class classifier:
                 this.model = cPickle.load(f)
             return
 
-        model = RandomForestClassifier(n_estimators=150)
+        model = RandomForestClassifier(n_estimators=50)
         y = []
         for target in Y:
             y.append(class_num_map[target[1]])
         
         model.fit(X, y)
 
-        with gzip.open("models/hmm.model", 'wb') as f:
+        with gzip.open("models/random_forest.model", 'wb') as f:
             cPickle.dump(model, f, -1)
 
     def evaluate_model(this, samples, targets):
@@ -45,7 +45,7 @@ class classifier:
 
 if __name__ == '__main__':
     ## Parse command line arguments
-    parser = argparse.ArgumentParser(description=hmm_meta['program_description'])
+    parser = argparse.ArgumentParser(description=random_forest_meta['program_description'])
     parser.add_argument('command', **arg_command)
     parser.add_argument('dataset', **arg_dataset)
     parser.add_argument('classes', **arg_classes)
@@ -56,8 +56,8 @@ if __name__ == '__main__':
     
     if cmd == "train":
         gt, features = extract_features(args.dataset[0])
-        c = classifier(features, gt, hmm_model)
+        c = classifier(features, gt, random_forest_model)
     if cmd == "test":
-        c = classifier(None, None, None, "models/hmm.model") 
+        c = classifier(None, None, None, "models/random_forest.model") 
         gt, features = extract_features(args.dataset[0])
         c.evaluate_model(features, gt)
