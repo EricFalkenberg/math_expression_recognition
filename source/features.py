@@ -1,6 +1,7 @@
 from PIL import Image, ImageDraw
 from config import file_handler_config as fconfig
 from file_handler import read_training_data
+from classification.features import smooth_xy_points, reposition_xy_points
 
 
 def normalize_coords(strokes):
@@ -35,9 +36,13 @@ def create_image_from_points(strokes):
     img.show()
 
 if __name__ == '__main__':
-    dataset = read_training_data(fconfig['training_data_loc'])
+    dataset = read_training_data(fconfig['training_data_tiny'])
     for i in dataset:
         f_handler = dataset[i]
-        traces = f_handler.traces
-        traces = [v.data for k,v in f_handler.traces.items()]    
-        create_image_from_points(normalize_coords(traces))
+        if not f_handler.is_malformed():
+            for group in f_handler.groups:
+                traces     = [i.data for i in group.traces]    
+                smooth     = smooth_xy_points({'id':traces})
+                reposition = reposition_xy_points(smooth)
+                norm_y     = normalize_coords(reposition['id'])
+                create_image_from_points(norm_y)

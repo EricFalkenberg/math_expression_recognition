@@ -4,15 +4,12 @@ from string import printable
 
 from config import file_handler_config as fconfig
 from config import baseline_meta, arg_data_type
-from file_handler import read_training_data
+from file_handler import read_training_data, split_data
 
 from classification import random_forest
 from classification.config import random_forest_meta as rnd_forest_config
 from classification.features import extract_features_from_sample
 import classification.features as cl_features
-
-
-
 
 class s_object:
     __slots__ = ('label', 'modifier', 'strokes') 
@@ -67,6 +64,8 @@ if __name__ == '__main__':
     data_type = args.data_type[0]
 
     dataset = read_training_data(fconfig['training_data_{0}'.format(data_type)])
+    train_names, test_names = split_data(dataset, 2.0/3.0)
+    print len(train_names), len(test_names)
+
     s = segmenter(dataset, "classification/models/random_forest.model")
     s.evaluate_model("test_{0}".format(data_type))
-
