@@ -23,7 +23,14 @@ class group:
         this.type = g.annotation.string
         this.truth = g.annotationxml['href']
         this.traces = [int(i['tracedataref']) for i in g.find_all('traceview')]
+        this.traces_id = [int(i['tracedataref']) for i in g.find_all('traceview')]
         this.map_traces(trace_data)
+        this.fix_info()
+
+    def fix_info(this):
+        if this.type == ",":
+            this.type = "COMMA"
+            print this.id, this.type, this.truth, this.traces_id
 
     def map_traces(this, trace_data):
         this.traces = map(lambda x: trace_data[x], this.traces)
@@ -36,7 +43,8 @@ class f_handler:
         this.traces = traces
 
     def is_malformed(this):
-        return this.groups == None or this.traces == None
+        return this.groups == None or this.traces == None or \
+               len(this.groups) == 0 or len(this.traces) == 0
 
 def read_inkml(fname):
     with open(fname) as f:
