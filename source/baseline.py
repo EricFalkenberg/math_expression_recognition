@@ -44,7 +44,7 @@ class segmenter:
         try:
             os.mkdir(out_name)
         except OSError as e:
-            print e.message
+            print "[WARNING]: Directory {0} already exists".format(out_name)
         for path in this.dataset:
             f_handler  = this.dataset[path]
             if not f_handler.is_malformed():
