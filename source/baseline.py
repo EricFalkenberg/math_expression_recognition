@@ -45,13 +45,13 @@ class segmenter:
                 ## Get predicted output
                 traces     = f_handler.traces
                 store_name, _ = os.path.splitext(os.path.basename(path))
-                with open("output/{0}.lg".format(store_name), 'w') as f:
+                with open("Baseline_output/{0}.lg".format(store_name), 'w') as f:
                     for tid in traces:
                         f.write(str(s_object('2', tid)))
                     s_object.reset()
                 ## Get ground truth
                 #groups     = f_handler.groups
-                #with open("gt/{0}.lg".format(store_name), 'w') as f:
+                #with open("Gt_output/{0}.lg".format(store_name), 'w') as f:
                 #    for group in groups:
                 #        ids = ', '.join(str(i) for i in group.traces_id)
                 #        print group.truth, group.type, group.id
