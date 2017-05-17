@@ -41,6 +41,10 @@ class classifier:
         predictions = this.model.predict(samples)
         for t, p in zip(targets, predictions):
             print "%s, %s" % (t[0], this.num_class_map[p])
+
+    def predict(this, sample):
+        prediction = this.model.predict(sample)
+        return this.num_class_map[prediction[0]]
              
 
 if __name__ == '__main__':

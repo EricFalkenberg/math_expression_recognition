@@ -30,7 +30,6 @@ class group:
     def fix_info(this):
         if this.type == ",":
             this.type = "COMMA"
-            print this.id, this.type, this.truth, this.traces_id
 
     def map_traces(this, trace_data):
         this.traces = map(lambda x: trace_data[x], this.traces)

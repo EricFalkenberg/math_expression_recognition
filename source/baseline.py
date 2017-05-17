@@ -7,6 +7,7 @@ from file_handler import read_training_data
 
 from classification import random_forest
 from classification.config import random_forest_meta as rnd_forest_config
+from classification.features import extract_features_from_sample
 import classification.features as cl_features
 
 
@@ -47,15 +48,11 @@ class segmenter:
                 store_name, _ = os.path.splitext(os.path.basename(path))
                 with open("Baseline_output/{0}.lg".format(store_name), 'w') as f:
                     for tid in traces:
-                        f.write(str(s_object('2', tid)))
+                        features   = extract_features_from_sample([traces[tid].data])
+                        p = this.classifier.predict(features)
+                        print p
+                        f.write(str(s_object(p, tid)))
                     s_object.reset()
-                ## Get ground truth
-                #groups     = f_handler.groups
-                #with open("Gt_output/{0}.lg".format(store_name), 'w') as f:
-                #    for group in groups:
-                #        ids = ', '.join(str(i) for i in group.traces_id)
-                #        print group.truth, group.type, group.id
-                #        f.write(str(s_object(group.type, ids)))
 
 if __name__ == '__main__':
     dataset = read_training_data(fconfig['training_data_loc'])

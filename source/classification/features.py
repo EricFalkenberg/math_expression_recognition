@@ -39,7 +39,6 @@ def normalize_coords(stroke_data):
     num_points = len(stroke_data) 
     progress = progressbar.ProgressBar(max_value=num_points)
     curr = 0
-    print "Normalizing Coords"
     for key, strokes in stroke_data.items():
         tmp = []
         for stroke in strokes:
@@ -54,16 +53,12 @@ def normalize_coords(stroke_data):
             else:
                 new_strokes.append([[0, 0] for i in stroke])
         new_data[key] = new_strokes 
-        progress.update(curr)
-        curr += 1
     return new_data
 
 def smooth_xy_points(stroke_data):
     new_data = {}
     num_points = len(stroke_data) 
-    progress = progressbar.ProgressBar(max_value=num_points)
     curr = 0
-    print "Smoothing Stroke Data"
     for key, value in stroke_data.items():
         smoothed = []
         for stroke in value:
@@ -72,17 +67,12 @@ def smooth_xy_points(stroke_data):
             new_stroke = [stroke[0]] + new_stroke + [stroke[-1]]
             smoothed.append(stroke)
         new_data[key] = smoothed
-        progress.update(curr)
-        curr += 1
     return new_data
 
 def reposition_xy_points(stroke_data):
     distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
     ret_map = {}
     num_points = len(stroke_data) 
-    progress = progressbar.ProgressBar(max_value=num_points)
-    curr = 0
-    print "Resampling Points"
     for key, value in stroke_data.items():
         # Populate list representing the length of each stroke
         segments_length = [sum([distance(s[x], s[x+1]) for x in range(len(s)-1)]) for s in value]
@@ -97,6 +87,9 @@ def reposition_xy_points(stroke_data):
             st = stroke
             points_to_place = np.round(percentage*100)
             if points_to_place == 0:
+                if len(st) > 0:
+                     repositioned = [st[0] for _ in range(100)]
+                     processed.append(repositioned)
                 continue
             points_placed = 1
             repositioned = [st[0]]
@@ -122,8 +115,6 @@ def reposition_xy_points(stroke_data):
                 st[index] = repositioned[-1]
             processed.append(repositioned)
         ret_map[key] = processed
-        progress.update(curr)
-        curr += 1
     return ret_map
 
 def extract_xy_data(string):
@@ -133,9 +124,6 @@ def extract_xy_data(string):
 def retrieve_stroke_data(X, directory, config):
     trace_map = {}
     num_files = len(os.listdir(directory % config['location']))
-    progress = progressbar.ProgressBar(max_value=num_files)
-    curr = 0
-    print "Processing files in %s" % (directory % config['location'])
     for filename in os.listdir(directory % config['location']):
         if filename not in config['exclude']:
             tree = ET.parse((directory+"%s") % (config['location'], filename))
@@ -146,18 +134,14 @@ def retrieve_stroke_data(X, directory, config):
             tmp = map(extract_xy_data, (stroke.text for stroke in trace))
             if not (any([len(i)<2 for i in tmp]) or len(tmp) < 1):
                  trace_map[loc] = map(extract_xy_data, (stroke.text for stroke in trace))
-        progress.update(curr)
-        curr += 1
     progress.update(curr)
     return {i:trace_map[i] for i in X if i in trace_map}
 
 def calc_ndtse(stroke_data):
     num_points = len(stroke_data) 
-    progress = progressbar.ProgressBar(max_value=num_points)
     curr = 0
     distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
     new_map = {}
-    print 'Calculating NDTSE'
     for key, strokes in stroke_data.items():
         new_strokes = []
         lengths = [sum(distance(stroke[index], stroke[index+1]) for index in range(len(stroke)-1)) for stroke in strokes]
@@ -172,32 +156,22 @@ def calc_ndtse(stroke_data):
                     st.append(0)
             new_strokes.append(st)
         new_map[key] = new_strokes
-        progress.update(curr)
-        curr += 1
     return new_map
 
 def get_norm_y(stroke_data):
     num_points = len(stroke_data) 
-    progress = progressbar.ProgressBar(max_value=num_points)
-    curr = 0
     new_map = {}
-    print 'Retrieving Normalized Y Coordinate'
     for key, strokes in stroke_data.items():
         new_strokes = []
         for stroke in strokes:
             new_strokes.append([p[1] for p in stroke])
         new_map[key] = new_strokes
-        progress.update(curr)
-        curr += 1
     return new_map
 
 def calc_vicinity_slope(stroke_data):
     distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
     num_points = len(stroke_data)
-    progress = progressbar.ProgressBar(max_value=num_points)
-    curr = 0
     new_map = {}
-    print 'Calculating Vicinity Slope'
     for key, strokes in stroke_data.items():
         new_strokes = []
         for stroke in strokes:
@@ -218,18 +192,13 @@ def calc_vicinity_slope(stroke_data):
             np1 = 0
             np0 = 0
             new_strokes.append([p0, p1] + st + [np1, np0])
-        progress.update(curr)
-        curr += 1
         new_map[key] = new_strokes
     return new_map
 
 def calc_curvature(stroke_data):
     distance = lambda p1, p2: np.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2)
     num_points = len(stroke_data)
-    progress = progressbar.ProgressBar(max_value=num_points)
-    curr = 0
     new_map = {}
-    print 'Calculating Curvature' 
     for key, strokes in stroke_data.items():
         new_strokes = []
         for stroke in strokes:
@@ -258,10 +227,30 @@ def calc_curvature(stroke_data):
             np1 = 0
             np0 = 0
             new_strokes.append([p0, p1] + st + [np1, np0])
-        progress.update(curr)
-        curr += 1
         new_map[key] = new_strokes
     return new_map
+
+def extract_features_from_sample(strokes):
+    stroke_map = { 'id' : strokes }
+    smoothed_stroke_data = smooth_xy_points(stroke_map)
+    repositioned_stroke_data = reposition_xy_points(smoothed_stroke_data)
+    norm_stroke_data = normalize_coords(repositioned_stroke_data)
+    ndtse   = calc_ndtse(norm_stroke_data)
+    norm_y  = get_norm_y(norm_stroke_data) 
+    alpha   = calc_vicinity_slope(norm_stroke_data)
+    beta    = calc_curvature(norm_stroke_data)
+    flatten = lambda l: [item for sublist in l for item in sublist]
+    idx = 0
+    dataset = [] 
+    for key, sample in ndtse.items():
+        ndtse[key] = flatten(sample)
+        norm_y[key] = flatten(norm_y[key])
+        alpha[key] = flatten(alpha[key])
+        beta[key] = flatten(beta[key])
+        if ndtse[key] != []:
+            dataset.append((ndtse[key][:98]+norm_y[key][:98]+alpha[key][:98]+beta[key][:98]))
+    return dataset
+    
 
 
 def extract_features(fname, time_series=False):
