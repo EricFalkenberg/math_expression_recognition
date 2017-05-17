@@ -46,11 +46,10 @@ class segmenter:
                 ## Get predicted output
                 traces     = f_handler.traces
                 store_name, _ = os.path.splitext(os.path.basename(path))
-                with open("Baseline_output/{0}.lg".format(store_name), 'w') as f:
+                with open("Test_output/{0}.lg".format(store_name), 'w') as f:
                     for tid in traces:
                         features   = extract_features_from_sample([traces[tid].data])
                         p = this.classifier.predict(features)
-                        print p
                         f.write(str(s_object(p, tid)))
                     s_object.reset()
 
