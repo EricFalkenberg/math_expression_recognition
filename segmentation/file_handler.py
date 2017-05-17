@@ -35,6 +35,9 @@ class f_handler:
         this.groups = groups
         this.traces = traces
 
+    def is_malformed(this):
+        return this.groups == None or this.traces == None
+
 def read_inkml(fname):
     with open(fname) as f:
         soup = Soup(f)
@@ -51,13 +54,14 @@ def read_directory(directory):
     directory = directory+"/{}"
     for fn in files:
         fname = directory.format(fn)
-        groups, traces = read_inkml(fname)
-        out_map[fname] = f_handler(groups, traces)  
+        _, ext = os.path.splitext(fname)
+        if ext == ".inkml":
+            groups, traces = read_inkml(fname)
+            out_map[fname] = f_handler(groups, traces)  
     return out_map
 
-if __name__ == '__main__':
-    dir_name = "/home/eric/Desktop/pattern_rec/TrainINKML/expressmatch"
-    f_handlers = read_directory(dir_name)
-    for i in f_handlers:
-        print i
-
+def read_training_data(dir_names):
+    f_handlers = {}
+    for dir_name in dir_names: 
+         f_handlers.update(read_directory(dir_name))
+    return f_handlers
