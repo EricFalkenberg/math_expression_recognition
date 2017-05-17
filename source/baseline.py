@@ -3,6 +3,7 @@ import os
 from string import printable
 
 from config import file_handler_config as fconfig
+from config import baseline_meta, arg_data_type
 from file_handler import read_training_data
 
 from classification import random_forest
@@ -39,14 +40,18 @@ class segmenter:
         this.classifier = random_forest.classifier(None, None, None, classifier_path) 
         this.dataset = dataset
 
-    def evaluate_model(this):
+    def evaluate_model(this, out_name):
+        try:
+            os.mkdir(out_name)
+        except OSError as e:
+            print e.message
         for path in this.dataset:
             f_handler  = this.dataset[path]
             if not f_handler.is_malformed():
                 ## Get predicted output
                 traces     = f_handler.traces
                 store_name, _ = os.path.splitext(os.path.basename(path))
-                with open("Test_output/{0}.lg".format(store_name), 'w') as f:
+                with open("{0}/{1}.lg".format(out_name, store_name), 'w') as f:
                     for tid in traces:
                         features   = extract_features_from_sample([traces[tid].data])
                         p = this.classifier.predict(features)
@@ -54,7 +59,14 @@ class segmenter:
                     s_object.reset()
 
 if __name__ == '__main__':
-    dataset = read_training_data(fconfig['training_data_loc'])
+    ## Parse command line arguments
+    parser = argparse.ArgumentParser(description=baseline_meta['program_description']) 
+    parser.add_argument('data_type',  **arg_data_type)
+
+    args = parser.parse_args()
+    data_type = args.data_type[0]
+
+    dataset = read_training_data(fconfig['training_data_{0}'.format(data_type)])
     s = segmenter(dataset, "classification/models/random_forest.model")
-    s.evaluate_model()
+    s.evaluate_model("test_{0}".format(data_type))
 
