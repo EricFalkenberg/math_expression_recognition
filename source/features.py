@@ -1,11 +1,11 @@
 import math
+from math import degrees, atan2
 import matplotlib.pyplot as plt
-import numpy
+import numpy as np
 from PIL import Image, ImageDraw
 from config import file_handler_config as fconfig
 from file_handler import read_training_data
 from classification.features import smooth_xy_points, reposition_xy_points
-
 
 def normalize_coords(strokes):
     tmp = []
@@ -34,6 +34,10 @@ def normalize_coords(strokes):
     return new_strokes
 
 def create_image_from_points(strokes):
+    stroke1 = strokes[0]
+    bounding_box = calculate_bounding_box(stroke1)
+    bbox_center  = (bounding_box[0]+bounding_box[1])/2., (bounding_box[2]+bounding_box[3])/2.
+
     tmp = []
     for stroke in strokes:
         tmp.extend(stroke)
@@ -43,43 +47,80 @@ def create_image_from_points(strokes):
     draw = ImageDraw.Draw(img)
     for stroke in strokes:
         coord_pairs = [(i[0], i[1]) for i in stroke]
-        draw.line(coord_pairs, fill='black', width=5)
+        for x,y in coord_pairs:
+            draw.ellipse([(x,y),(x+3,y+3)], fill='black')
+        #draw.line(coord_pairs, fill='black', width=5)
+    draw.ellipse([(bbox_center[0],bbox_center[1]),(bbox_center[0]+5,bbox_center[1]+5)], fill='red')
     img.show()
 
 def get_angle_bin(angle):
-    idx = 0
-    while angle > 0:
-        angle -= 30
-        idx += 1
-    return idx
+    if 0 <= angle < 30 or angle == 360:
+        return 0
+    if 30 <= angle < 60:
+        return 1
+    if 60 <= angle < 90:
+        return 2
+    if 90 <= angle < 120:
+        return 3
+    if 120 <= angle < 150:
+        return 4
+    if 150 <= angle < 180:
+        return 5
+    if 180 <= angle < 210:
+        return 6
+    if 210 <= angle < 240:
+        return 7
+    if 240 <= angle < 270:
+        return 8
+    if 270 <= angle < 300:
+        return 9
+    if 300 <= angle < 330:
+        return 10
+    if 330 <= angle < 360:
+        return 11
 
 def get_distance_bin(d):
-    dists = [1./16, 1./8, 1./4, 1./2, 1.]
-    idx = 0
-    while d > dists[idx] and idx < len(dists)-1:
-        idx += 1
-    return idx
+    dists = [200./16, 200./8, 200./4, 200./2, 200.]
+    if d < dists[0]:
+        return 0
+    if d < dists[1]:
+        return 1
+    if d < dists[2]:
+        return 2
+    if d < dists[3]:
+        return 3
+    if d < dists[4]:
+        return 4
+    else:
+        return 4
 
-def msscf(strokes):
+def msscf(stroke1, stroke2):
+    fix_angle = lambda x: 360+x if x < 0 else x
+    bounding_box = calculate_bounding_box(stroke1)
+    bbox_center  = (bounding_box[0]+bounding_box[1])/2., (bounding_box[2]+bounding_box[3])/2.
+
+    strokes = [stroke1, stroke2]
+    bins = [[0 for _ in range(5)] for _ in range(12)]
+
     tmp = []
     for stroke in strokes:
         tmp.extend(stroke)
     upper_x = max([i[0] for i in tmp])
     tot = len(tmp)
+    
+    create_image_from_points(strokes)
 
-    bins = [[0 for _ in range(5)] for _ in range(12)]
-    ns = [[[i[0]/200, i[1]/200.] for i in stroke] for stroke in strokes]
-
-    base_x = upper_x / 2.
-    base_y = 0.5
+    base_x, base_y = bbox_center
  
     for stroke in strokes:
         for x,y in stroke:
-            dist  = distance(base_x, base_y, x, y)
+            dist  = distance(base_x, x, base_y, y)
             d_bin = get_distance_bin(dist) 
             dx = x-base_x
             dy = y-base_y
-            angle = math.degrees(math.atan(float(dy)/dx))
+            dot = base_x*x + base_y*y
+            det = base_x*y - base_y*x
+            angle = fix_angle(degrees(atan2(float(dy), float(dx))))
             a_bin = get_angle_bin(angle)
             bins[a_bin][d_bin] += 1
     return [[float(i)/tot for i in x] for x in bins]
@@ -116,7 +157,6 @@ if __name__ == '__main__':
         f_handler = dataset[i]
         if not f_handler.is_malformed():
             express_traces = []
-            print i
             for group in f_handler.groups:
                 #if len(group.traces) > 1:
                 traces     = [i.data for i in group.traces]    
@@ -124,9 +164,12 @@ if __name__ == '__main__':
                 reposition = reposition_xy_points(smooth)
                 #stroke_symbol_pair_features(reposition['id'][0], reposition['id'][1])
                 express_traces.extend(reposition['id'])
-            norm_y     = normalize_coords(express_traces)
-            create_image_from_points(norm_y)
-            shape_context_features = msscf(norm_y)
-            for c in shape_context_features:
-                plt.bar(range(len(c)), c)
-                plt.show()
+                norm_y     = normalize_coords(reposition['id'])
+                if len(norm_y) > 1:
+                    #create_image_from_points(norm_y[:2])
+                    shape_context_features = msscf(norm_y[0], norm_y[1])
+                    angles = [[i, i+30] for i in range(0, 360, 30)]
+                    for c, a in zip(shape_context_features, angles):
+                        print a
+                        plt.bar(range(len(c)), c)
+                        plt.show()

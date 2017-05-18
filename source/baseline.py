@@ -51,6 +51,7 @@ class segmenter:
                 with open("{0}/{1}.lg".format(out_name, store_name), 'w') as f:
                     for tid in traces:
                         features   = extract_features_from_sample([traces[tid].data])
+                        print this.classifier.model.predict_proba(features)
                         p = this.classifier.predict(features)
                         f.write(str(s_object(p, tid)))
                     s_object.reset()
@@ -64,8 +65,7 @@ if __name__ == '__main__':
     data_type = args.data_type[0]
 
     dataset = read_training_data(fconfig['training_data_{0}'.format(data_type)])
-    train_names, test_names = split_data(dataset, 2.0/3.0)
-    print len(train_names), len(test_names)
+    #train_names, test_names = split_data(dataset, 2.0/3.0)
 
     s = segmenter(dataset, "classification/models/random_forest.model")
     s.evaluate_model("test_{0}".format(data_type))
