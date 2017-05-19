@@ -1,4 +1,5 @@
 import math
+from sklearn import preprocessing
 from math import degrees, atan2
 import matplotlib.pyplot as plt
 import numpy as np
@@ -125,6 +126,12 @@ def msscf(stroke1, stroke2):
     for x in bins:
         output.extend([float(i)/tot for i in x])
     return output 
+
+def calculate_angle(x1,x2,y1,y2):
+    fix_angle = lambda x: 360+x if x < 0 else x
+    dx = x2-x1
+    dy = y2-y1
+    return fix_angle(degrees(atan2(float(dy), float(dx))))
      
 
 def distance(x1, x2, y1, y2):
@@ -142,22 +149,29 @@ def stroke_symbol_pair_features(stroke1, stroke2):
     bounding2    = calculate_bounding_box(stroke2)
     b_center1    = (bounding1[0]+bounding1[1])/2.0, (bounding1[2]+bounding1[3])/2.0
     b_center2    = (bounding2[0]+bounding2[1])/2.0, (bounding2[2]+bounding2[3])/2.0
-    d_between_bc = distance(b_center1[0], b_center2[0], b_center1[1], b_center2[1]) 
     avg_center1  = sum([i[0] for i in stroke1])/float(len(stroke1)), \
                    sum([i[1] for i in stroke1])/float(len(stroke1))
     avg_center2  = sum([i[0] for i in stroke2])/float(len(stroke2)), \
                    sum([i[1] for i in stroke2])/float(len(stroke2))
+    ## Distance between bounding box centers
+    d_between_bc = distance(b_center1[0], b_center2[0], b_center1[1], b_center2[1]) 
+    ## Distance between averaged centers
     d_between_ac = distance(avg_center1[0], avg_center2[0], avg_center1[1], avg_center2[1])
+    ## Horizontal offset between end of first and beginning of second
     h_offset  = stroke2[0][0] - stroke1[-1][0] 
+    ## Vertical offset between bounding box centers
     v_dist_bb = b_center2[1] - b_center1[1] 
+    ## Get writing slope
+    writing_slope = calculate_angle(stroke1[-1][0],stroke1[-1][1],stroke2[0][0],stroke2[0][1])
+    ## Get maximum point pair distance
     max_pp_dist  = 0
     for x1,y1 in stroke1:
         for x2,y2 in stroke2:
             d = distance(x1,x2,y1,y2)
             if d > max_pp_dist:
                 max_pp_dist = d
-
-    return [d_between_bc, d_between_ac, max_pp_dist, h_offset, v_dist_bb]
+    g_features = [d_between_bc, d_between_ac, max_pp_dist, h_offset, v_dist_bb, writing_slope]
+    return preprocessing.scale(g_features)
 
 def preprocess_strokes(traces):
     traces     = [i.data for i in traces]    

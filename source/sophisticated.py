@@ -5,7 +5,7 @@ from string import printable
 from config import file_handler_config as fconfig
 from config import baseline_meta, arg_data_type
 from file_handler import read_training_data, split_data
-from features import msscf, preprocess_strokes
+from features import msscf, stroke_symbol_pair_features, preprocess_strokes
 
 from sklearn.ensemble import AdaBoostClassifier
 
@@ -60,12 +60,14 @@ class segmenter:
                     ## GET FEATURES
                     s1f, s2f           = preprocess_strokes([s1, s2]) 
                     shape_context      = msscf(s1f, s2f)
+                    geometric_features = stroke_symbol_pair_features(s1f, s2f)
                     features   = extract_features_from_sample([s1f, s2f])
                     class_probs_join   = this.classifier.model.predict_proba(features)
                     features   = extract_features_from_sample([s1f, s2f])
                     class_probs_sep    = this.classifier.model.predict_proba(features)
                     sample = []
                     sample.extend(shape_context)
+                    sample.extend(geometric_features)
                     sample.extend(class_probs_join[0].T)
                     sample.extend(class_probs_sep[0].T)
                     X.append(sample)
@@ -100,12 +102,14 @@ class segmenter:
                     ## GET FEATURES
                     s1f, s2f           = preprocess_strokes([s1, s2]) 
                     shape_context      = msscf(s1f, s2f)
+                    geometric_features = stroke_symbol_pair_features(s1f, s2f)
                     features   = extract_features_from_sample([s1f, s2f])
                     class_probs_join   = this.classifier.model.predict_proba(features)
                     features   = extract_features_from_sample([s1f, s2f])
                     class_probs_sep    = this.classifier.model.predict_proba(features)
                     sample = []
                     sample.extend(shape_context)
+                    sample.extend(geometric_features)
                     sample.extend(class_probs_join[0].T)
                     sample.extend(class_probs_sep[0].T)
                     to_join = this.model.predict(sample)
