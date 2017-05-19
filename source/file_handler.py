@@ -6,6 +6,7 @@ import random
 from bs4 import BeautifulSoup as Soup
 import logging
 from classification.config import random_forest_meta
+from config import file_handler_config
 logging.captureWarnings(True)
 
 class trace:
@@ -34,17 +35,70 @@ class group:
 
     def fix_info(this):
         if this.type == ",":
-            this.type = "COMMA"
+            this.type  = "COMMA"
+            this.truth = "COMMA{0}".format(this.truth[1:]) 
 
     def map_traces(this, trace_data):
         this.traces = map(lambda x: trace_data[x], this.traces)
         
-class f_handler:
-    __slots__ = ('groups', 'traces')
+class relation:
+    __slots__ = ('parent', 'child', 'type')
+
+    def __init__(this, parent, child, rtype):
+        this.parent = parent
+        this.child = child
+        this.type = rtype
+
+    def __str__(this):
+        return "R, {0}, {1}, {2}, 1.0\n".format(this.parent, this.child, this.type)
+
+class relation_graph:
+    __slots__ = ('root', 'relations')
     
-    def __init__(this, groups, traces):
+    types = ['undefined', 'right', 'subscript', 'superscript', 'above', 'below', 'inside']
+
+    def __init__(this, root):
+        this.relations = []
+        this.root = this.define_graph(root.findChildren(recursive=False)[0])
+
+    def define_graph(this, curr_node):
+        if curr_node.name == 'mrow':
+            p, c = curr_node.findChildren(recursive=False)
+            p_final = this.define_graph(p)
+            c_final = this.define_graph(c)
+            this.relations.append(relation(p_final, c_final, 'Right'))
+            return p_final
+        if curr_node.name == 'msub':
+            p, c = curr_node.findChildren(recursive=False)
+            p_final = this.define_graph(p)
+            c_final = this.define_graph(c)
+            this.relations.append(relation(p_final, c_final, 'Subscript'))
+            return p_final
+        if curr_node.name == 'msup': 
+            p, c = curr_node.findChildren(recursive=False)
+            p_final = this.define_graph(p)
+            c_final = this.define_graph(c)
+            this.relations.append(relation(p_final, c_final, 'Superscript'))
+            return p_final
+        if curr_node.name == 'msubsup':
+            p, c1, c2 = curr_node.findChildren(recursive=False)
+            p_final = this.define_graph(p)
+            c1_final = this.define_graph(c1)
+            c2_final = this.define_graph(c2)
+            this.relations.append(relation(p_final, c1_final, 'Subscript'))
+            this.relations.append(relation(p_final, c2_final, 'Superscript'))
+            return p_final
+        if curr_node.name in ['mi', 'mn', 'mo']:
+            return curr_node['xml:id']
+        raise Exception("None of blocks triggered\n{0}".format(curr_node.prettify()))
+
+class f_handler:
+    __slots__ = ('groups', 'traces', 'relationship_graph')
+    
+    def __init__(this, groups, traces, rel_graph):
         this.groups = groups
         this.traces = traces
+        this.relationship_graph = rel_graph
 
     def num_classes(this):
         classes = {}
@@ -53,21 +107,27 @@ class f_handler:
                 classes[group.type] = 0
             classes[group.type] += 1
         return classes
-            
 
     def is_malformed(this):
         return this.groups == None or this.traces == None or \
                len(this.groups) == 0 or len(this.traces) == 0
 
-def read_inkml(fname):
+    def __str__(this):
+        return "f_handler(num_groups={0}, total_num_traces={1})"\
+                .format(len(this.groups), len(this.traces))
+
+def read_inkml(fname, include_relations=False):
     with open(fname) as f:
         soup = Soup(f)
         try:
-            traces = { t.id: t for t in [trace(i) for i in soup.find_all('trace')] }
-            groups = [group(i, traces) for i in soup.tracegroup.find_all('tracegroup')]
-            return groups, traces
-        except:
-            return None, None
+            traces    = { t.id: t for t in [trace(i) for i in soup.find_all('trace')] }
+            groups    = [group(i, traces) for i in soup.tracegroup.find_all('tracegroup')]
+            rel_graph = relation_graph(soup.annotationxml.math)
+            return groups, traces, rel_graph
+        except Exception as e:
+            print e.message
+            raise Exception
+            return None, None, None
 
 def read_directory(directory):
     out_map = {}
@@ -77,8 +137,8 @@ def read_directory(directory):
         fname = directory.format(fn)
         _, ext = os.path.splitext(fname)
         if ext == ".inkml":
-            groups, traces = read_inkml(fname)
-            out_map[fname] = f_handler(groups, traces)  
+            groups, traces, rel_graph = read_inkml(fname)
+            out_map[fname] = f_handler(groups, traces, rel_graph)  
     return out_map
 
 def read_training_data(dir_names):
@@ -153,3 +213,7 @@ def split_data(f_handlers, train_percentage):
             test_names = test_names[:test_idx]+test_names[test_idx+1:]
 
     return train_names, test_names                
+
+if __name__ == '__main__':
+    f = file_handler_config['training_data_tiny']
+    read_training_data(f)
