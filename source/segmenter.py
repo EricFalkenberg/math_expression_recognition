@@ -1,9 +1,11 @@
 import argparse
+import gzip
+import cPickle
 import os
 from string import printable
 
 from config import file_handler_config as fconfig
-from config import baseline_meta, arg_data_type
+from config import baseline_meta, arg_command, arg_data_type
 from file_handler import read_training_data, split_data
 from features import msscf, stroke_symbol_pair_features, preprocess_strokes
 
@@ -34,14 +36,24 @@ class s_object:
         return "O, {0}_{1}, {0}, 1.0, {2}\n".format(this.label, this.modifier, this.strokes)
 
 class segmenter:
-    __slots__ = ('train_names', 'dataset', 'classifier')
+    __slots__ = ('train_names', 'test_names', 'dataset', 'classifier')
    
-    def __init__(this, train_names, dataset, classifier_path):
+    def __init__(this, train_names, test_names, dataset, classifier_path, model_name=None):
+        if model_name != None:
+            with gzip.open(model_name) as f:
+                this.classifier, this.dataset, this.train_names, this.test_names,\
+                this.model = cPickle.load(f)
+            return
         this.classifier = random_forest.classifier(None, None, None, classifier_path) 
         this.dataset = dataset
         this.train_names = train_names
+        this.test_names = test_names
         this.model = AdaBoostClassifier(n_estimators=25)
         this.train()
+        with gzip.open("models/adaboost_segmenter.model", 'wb') as f:
+            cPickle.dump([this.classifier, this.dataset, this.train_names, this.test_names,\
+                          this.model], f, -1)
+        
 
     def train(this):
         X = []
@@ -73,17 +85,8 @@ class segmenter:
                     X.append(sample)
                     y.append(1 if to_join else 0)
         this.model.fit(X,y)
-        #good, bad = 0, 0
-        #for sample, t in zip(X, y):
-        #    p = this.model.predict(sample)
-        #    if p == t:
-        #        good += 1
-        #    else:
-        #        bad += 1
-        #print "PERCENTAGE ON TRAIN: {}".format(float(good)/float(good+bad))
-            
 
-    def evaluate_model(this, out_name, test_names):
+    def evaluate_model(this, out_name):
         try:
             os.mkdir(out_name)
         except OSError as e:
@@ -93,7 +96,7 @@ class segmenter:
         except OSError as e:
             print "[WARNING]: Directory ground_truth/{0} already exists".format(out_name)
 
-        for path in test_names:
+        for path in this.test_names:
             f_handler  = this.dataset[path]
             if not f_handler.is_malformed():
                 strokes   = sorted([v for k,v in f_handler.traces.items()], key=lambda x: x.id)
@@ -137,17 +140,16 @@ class segmenter:
 if __name__ == '__main__':
     ## Parse command line arguments
     parser = argparse.ArgumentParser(description=baseline_meta['program_description']) 
+    parser.add_argument('command',  **arg_command)
     parser.add_argument('data_type',  **arg_data_type)
 
     args = parser.parse_args()
     data_type = args.data_type[0]
-
-    print "GETTING DATA"
-    dataset = read_training_data(fconfig['training_data_{0}'.format(data_type)])
-    print "SPLITTING DATA"
-    train_names, test_names = split_data(dataset, 2.0/3.0)
-
-    print "TRAINING SEGMENTER"
-    s = segmenter(train_names, dataset, "classification/models/random_forest.model")
-    print "EVALUATING SEGMENTER"
-    s.evaluate_model("test_{0}".format(data_type), test_names)
+    ## Run classifier
+    if args.command[0] == "train":
+        dataset = read_training_data(fconfig['training_data_{0}'.format(data_type)])
+        train_names, test_names = split_data(dataset, 2.0/3.0)
+        s = segmenter(train_names, test_names, dataset, "classification/models/random_forest.model")
+    elif args.command[0] == "test":
+        s = segmenter(None, None, None, None, "models/adaboost_segmenter.model")
+        s.evaluate_model("test_{0}".format(data_type))

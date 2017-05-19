@@ -34,3 +34,10 @@ arg_data_type = {
     'help'  : 'Determine what size of data to train on',
     'choices' : ['tiny', 'small', 'medium', 'full']
 }
+arg_command = {
+    'metavar' : 'cmd',
+    'type'  : str,
+    'nargs' : 1,
+    'help'  : 'Whether to test or train the model',
+    'choices' : ['train', 'test']
+}

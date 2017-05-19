@@ -122,7 +122,7 @@ def read_inkml(fname, include_relations=False):
         try:
             traces    = { t.id: t for t in [trace(i) for i in soup.find_all('trace')] }
             groups    = [group(i, traces) for i in soup.tracegroup.find_all('tracegroup')]
-            rel_graph = relation_graph(soup.annotationxml.math)
+            rel_graph = None #relation_graph(soup.annotationxml.math)
             return groups, traces, rel_graph
         except Exception as e:
             print e.message
