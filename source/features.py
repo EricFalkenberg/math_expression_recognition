@@ -108,8 +108,6 @@ def msscf(stroke1, stroke2):
     upper_x = max([i[0] for i in tmp])
     tot = len(tmp)
     
-    create_image_from_points(strokes)
-
     base_x, base_y = bbox_center
  
     for stroke in strokes:
@@ -123,7 +121,10 @@ def msscf(stroke1, stroke2):
             angle = fix_angle(degrees(atan2(float(dy), float(dx))))
             a_bin = get_angle_bin(angle)
             bins[a_bin][d_bin] += 1
-    return [[float(i)/tot for i in x] for x in bins]
+    output = []
+    for x in bins:
+        output.extend([float(i)/tot for i in x])
+    return output 
      
 
 def distance(x1, x2, y1, y2):
@@ -147,8 +148,23 @@ def stroke_symbol_pair_features(stroke1, stroke2):
     avg_center2  = sum([i[0] for i in stroke2])/float(len(stroke2)), \
                    sum([i[1] for i in stroke2])/float(len(stroke2))
     d_between_ac = distance(avg_center1[0], avg_center2[0], avg_center1[1], avg_center2[1])
-    print d_between_bc, d_between_ac
+    h_offset  = stroke2[0][0] - stroke1[-1][0] 
+    v_dist_bb = b_center2[1] - b_center1[1] 
+    max_pp_dist  = 0
+    for x1,y1 in stroke1:
+        for x2,y2 in stroke2:
+            d = distance(x1,x2,y1,y2)
+            if d > max_pp_dist:
+                max_pp_dist = d
 
+    return [d_between_bc, d_between_ac, max_pp_dist, h_offset, v_dist_bb]
+
+def preprocess_strokes(traces):
+    traces     = [i.data for i in traces]    
+    smooth     = smooth_xy_points({'id':traces})
+    reposition = reposition_xy_points(smooth)
+    norm_y     = normalize_coords(reposition['id'])
+    return norm_y
 
 if __name__ == '__main__':
     dataset = read_training_data(fconfig['training_data_tiny'])
@@ -158,15 +174,12 @@ if __name__ == '__main__':
         if not f_handler.is_malformed():
             express_traces = []
             for group in f_handler.groups:
-                #if len(group.traces) > 1:
                 traces     = [i.data for i in group.traces]    
                 smooth     = smooth_xy_points({'id':traces})
                 reposition = reposition_xy_points(smooth)
-                #stroke_symbol_pair_features(reposition['id'][0], reposition['id'][1])
                 express_traces.extend(reposition['id'])
                 norm_y     = normalize_coords(reposition['id'])
                 if len(norm_y) > 1:
-                    #create_image_from_points(norm_y[:2])
                     shape_context_features = msscf(norm_y[0], norm_y[1])
                     angles = [[i, i+30] for i in range(0, 360, 30)]
                     for c, a in zip(shape_context_features, angles):
