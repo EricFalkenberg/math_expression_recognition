@@ -1,4 +1,6 @@
 import math
+from random import random
+import networkx as nx
 from sklearn import preprocessing
 from math import degrees, atan2
 import matplotlib.pyplot as plt
@@ -44,15 +46,12 @@ def create_image_from_points(strokes):
         tmp.extend(stroke)
     upper_x = int(math.ceil(max([i[0] for i in tmp])))
 
-    img = Image.new("RGB", (upper_x, 200), "white")
+    img = Image.new("RGB", (upper_x+50, 200+50), "white")
     draw = ImageDraw.Draw(img)
     for stroke in strokes:
         coord_pairs = [(i[0], i[1]) for i in stroke]
-        for x,y in coord_pairs:
-            draw.ellipse([(x,y),(x+3,y+3)], fill='black')
-        #draw.line(coord_pairs, fill='black', width=5)
-    draw.ellipse([(bbox_center[0],bbox_center[1]),(bbox_center[0]+5,bbox_center[1]+5)], fill='red')
-    img.show()
+        draw.line(coord_pairs, fill='black', width=3)
+    return img
 
 def get_angle_bin(angle):
     if 0 <= angle < 30 or angle == 360:
@@ -180,23 +179,42 @@ def preprocess_strokes(traces):
     norm_y     = normalize_coords(reposition['id'])
     return norm_y
 
+def has_los(p1, p2, image):
+    x, y = p1
+    in_bounds = lambda x, y: 0 < x < image.size[0] and 0 < y < image.size[1]
+    cycle = 0
+    while in_bounds(x,y) and image.getpixel((x,y)) == (0,0,0) and cycle < 1000:
+        od = distance(x, p2[0], y, p2[1])
+        t  = 1 / od
+        x = (1 - t)*x + t*p2[0]
+        y = (1 - t)*y + t*p2[1] 
+        cycle += 1
+    cycle = 0
+    while in_bounds(x,y) and image.getpixel((x,y)) != (0,0,0) and \
+          od < distance(p1[0], p2[0], p1[1], p2[1]) and cycle < 1000:
+        od = distance(x, p2[0], y, p2[1])
+        t  = 1 / od
+        x = (1 - t)*x + t*p2[0]
+        y = (1 - t)*y + t*p2[1] 
+        cycle += 1
+    if p2[0]+1 >= x >= p2[0]-1 and p2[1]+1 >= y >= p2[1]-1:
+        return True
+    else:
+        return False
+
+
 if __name__ == '__main__':
     dataset = read_training_data(fconfig['training_data_tiny'])
     idx = 0
-    for i in dataset:
-        f_handler = dataset[i]
-        if not f_handler.is_malformed():
-            express_traces = []
-            for group in f_handler.groups:
-                traces     = [i.data for i in group.traces]    
-                smooth     = smooth_xy_points({'id':traces})
-                reposition = reposition_xy_points(smooth)
-                express_traces.extend(reposition['id'])
-                norm_y     = normalize_coords(reposition['id'])
-                if len(norm_y) > 1:
-                    shape_context_features = msscf(norm_y[0], norm_y[1])
-                    angles = [[i, i+30] for i in range(0, 360, 30)]
-                    for c, a in zip(shape_context_features, angles):
-                        print a
-                        plt.bar(range(len(c)), c)
-                        plt.show()
+    #for i in dataset:
+    #    f_handler = dataset[i]
+    #    if not f_handler.is_malformed():
+    #        express_traces = []
+    #        for group in f_handler.groups:
+    #            traces     = [i.data for i in group.traces]    
+    #            smooth     = smooth_xy_points({'id':traces})
+    #            reposition = reposition_xy_points(smooth)
+    #            express_traces.extend(reposition['id'])
+    #       norm_y = normalize_coords(express_traces)
+    #        create_los_graph(norm_y)
+
