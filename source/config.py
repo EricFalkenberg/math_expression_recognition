@@ -1,8 +1,15 @@
-baseline_meta = {
+baseline_segmenter_meta = {
     'program_description' : """
                             Segmentation algorithm that treats every stroke as a symbol and then
                             attempts to classify based on the random forest classifier in
                             the classification directory
+                            """
+}
+
+segmenter_meta = {
+    'program_description' : """
+                            Segmentation algorithm that uses Adaboost trained on a combination of 
+                            geometric, multi-scale shape context, and classifier features.
                             """
 }
 

@@ -3,7 +3,7 @@ import os
 from string import printable
 
 from config import file_handler_config as fconfig
-from config import baseline_meta, arg_data_type
+from config import baseline_segmenter_meta, arg_data_type
 from file_handler import read_training_data, split_data
 
 from classification import random_forest
@@ -58,7 +58,7 @@ class segmenter:
 
 if __name__ == '__main__':
     ## Parse command line arguments
-    parser = argparse.ArgumentParser(description=baseline_meta['program_description']) 
+    parser = argparse.ArgumentParser(description=baseline_segmenter_meta['program_description']) 
     parser.add_argument('data_type',  **arg_data_type)
 
     args = parser.parse_args()
