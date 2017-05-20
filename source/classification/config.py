@@ -15,7 +15,7 @@ kdtree_model = {
 ## HMM Specific Configuration
 random_forest_meta = {
     'program_description': """
-                           Classify isolated handwritten math symbols with an HMM.
+                           Classify isolated handwritten math symbols with a Random Forest.
                            """,
     'class_names' : ['!', '(', ')', '+', '-', '.', '/', '0', '1', '2', '3', '4', '5',
                       '6', '7', '8', '9', '=', 'A', 'B', 'C', 'COMMA', 'E', 'F', 'G',
