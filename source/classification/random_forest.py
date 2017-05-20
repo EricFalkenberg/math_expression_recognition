@@ -27,7 +27,7 @@ class classifier:
                 this.model = cPickle.load(f)
             return
 
-        model = RandomForestClassifier(n_estimators=50)
+        model = RandomForestClassifier(n_estimators=150, max_depth=50, oob_score=True)
         y = []
         for target in Y:
             y.append(class_num_map[target[1]])
@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
     cmd     = args.command[0]
     dataset = args.dataset[0]
-    
+
     if cmd == "train":
         gt, features = extract_features(args.dataset[0])
         c = classifier(features, gt, random_forest_model)
