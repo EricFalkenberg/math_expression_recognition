@@ -125,8 +125,6 @@ def read_inkml(fname, include_relations=False):
             rel_graph = None #relation_graph(soup.annotationxml.math)
             return groups, traces, rel_graph
         except Exception as e:
-            print e.message
-            raise Exception
             return None, None, None
 
 def read_directory(directory):
