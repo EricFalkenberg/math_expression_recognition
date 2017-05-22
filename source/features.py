@@ -94,10 +94,13 @@ def get_distance_bin(d):
     else:
         return 4
 
-def msscf(stroke1, stroke2):
+def msscf(stroke1, stroke2, center=None):
     fix_angle = lambda x: 360+x if x < 0 else x
-    bounding_box = calculate_bounding_box(stroke1)
-    bbox_center  = (bounding_box[0]+bounding_box[1])/2., (bounding_box[2]+bounding_box[3])/2.
+    if center == None:
+        bounding_box = calculate_bounding_box(stroke1)
+        bbox_center  = (bounding_box[0]+bounding_box[1])/2., (bounding_box[2]+bounding_box[3])/2.
+    else:
+        bbox_center = center
 
     strokes = [stroke1, stroke2]
     bins = [[0 for _ in range(5)] for _ in range(12)]
@@ -172,10 +175,16 @@ def stroke_symbol_pair_features(stroke1, stroke2):
     g_features = [d_between_bc, d_between_ac, max_pp_dist, h_offset, v_dist_bb, writing_slope]
     return preprocessing.scale(g_features)
 
-def preprocess_strokes(traces):
-    traces     = [i.data for i in traces]    
+def preprocess_strokes(traces, raw=False):
+    if raw:
+        traces = traces
+    else:
+        traces     = [i.data for i in traces]    
     smooth     = smooth_xy_points({'id':traces})
-    reposition = reposition_xy_points(smooth)
+    try:
+        reposition = reposition_xy_points(smooth)
+    except IndexError:
+        return None
     norm_y     = normalize_coords(reposition['id'])
     return norm_y
 
@@ -183,7 +192,8 @@ def has_los(p1, p2, image):
     x, y = p1
     in_bounds = lambda x, y: 0 < x < image.size[0] and 0 < y < image.size[1]
     cycle = 0
-    while in_bounds(x,y) and image.getpixel((x,y)) == (0,0,0) and cycle < 1000:
+    od = 0
+    while in_bounds(x,y) and image.getpixel((x,y)) == (0,0,0) and cycle < 300:
         od = distance(x, p2[0], y, p2[1])
         t  = 1 / od
         x = (1 - t)*x + t*p2[0]
@@ -191,7 +201,7 @@ def has_los(p1, p2, image):
         cycle += 1
     cycle = 0
     while in_bounds(x,y) and image.getpixel((x,y)) != (0,0,0) and \
-          od < distance(p1[0], p2[0], p1[1], p2[1]) and cycle < 1000:
+          od < distance(p1[0], p2[0], p1[1], p2[1]) and cycle < 300:
         od = distance(x, p2[0], y, p2[1])
         t  = 1 / od
         x = (1 - t)*x + t*p2[0]

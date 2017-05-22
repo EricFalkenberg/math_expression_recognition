@@ -2,7 +2,14 @@ baseline_segmenter_meta = {
     'program_description' : """
                             Segmentation algorithm that treats every stroke as a symbol and then
                             attempts to classify based on the random forest classifier in
-                            the classification directory
+                            the classification directory.
+                            """
+}
+
+parser_meta = {
+    'program_description' : """
+                            Parsing algorithm that uses an MST based aproach to perform structural
+                            analysis on groupings of math symbols.
                             """
 }
 
@@ -46,5 +53,5 @@ arg_command = {
     'type'  : str,
     'nargs' : 1,
     'help'  : 'Whether to test or train the model',
-    'choices' : ['train', 'test']
+    'choices' : ['train', 'test', 'test_segmenter']
 }

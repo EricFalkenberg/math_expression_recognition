@@ -355,6 +355,7 @@ def extract_features_from_sample(strokes):
     smoothed_stroke_data = smooth_xy_points(stroke_map)
     repositioned_stroke_data = reposition_xy_points(smoothed_stroke_data)
     norm_stroke_data = normalize_coords(repositioned_stroke_data)
+    shape_context      = shape_cont(norm_stroke_data)
     ndtse   = calc_ndtse(norm_stroke_data)
     norm_y  = get_norm_y(norm_stroke_data) 
     alpha   = calc_vicinity_slope(norm_stroke_data)
@@ -368,7 +369,7 @@ def extract_features_from_sample(strokes):
         alpha[key] = flatten(alpha[key])
         beta[key] = flatten(beta[key])
         if ndtse[key] != []:
-            dataset.append((ndtse[key][:45]+norm_y[key][:45]+alpha[key][:45]+beta[key][:45]))
+            dataset.append((shape_context[key]+ndtse[key][:45]+norm_y[key][:45]+alpha[key][:45]+beta[key][:45]))
     return dataset
     
 def shape_cont(stroke_map):

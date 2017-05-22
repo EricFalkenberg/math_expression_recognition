@@ -1,4 +1,5 @@
 import os
+import traceback
 import time
 import math
 from copy import copy
@@ -24,7 +25,9 @@ class trace:
 class group:
     __slots__ = ('id', 'type', 'truth', 'traces')
     
-    def __init__(this, g, trace_data):
+    def __init__(this, g, trace_data, override=False):
+        if override:
+            return
         this.id = g['xml:id']
         this.type = g.annotation.string
         this.truth = g.annotationxml['href']
@@ -48,6 +51,13 @@ class relation:
         this.parent = parent
         this.child = child
         this.type = rtype
+        this.fix_info()
+
+    def fix_info(this):
+        if this.parent[0] == ",":
+            this.parent = "COMMA{0}".format(this.parent[1:])
+        if this.child[0] == ",":
+            this.child = "COMMA{0}".format(this.child[1:])
 
     def __str__(this):
         return "R, {0}, {1}, {2}, 1.0\n".format(this.parent, this.child, this.type)
@@ -62,13 +72,30 @@ class relation_graph:
         this.root = this.define_graph(root.findChildren(recursive=False)[0])
 
     def define_graph(this, curr_node):
-        if curr_node.name == 'mrow':
-            p, c = curr_node.findChildren(recursive=False)
-            p_final = this.define_graph(p)
-            c_final = this.define_graph(c)
-            this.relations.append(relation(p_final, c_final, 'Right'))
+        if curr_node.name == 'mfrac':
+            c1, c2 = curr_node.findChildren(recursive=False)
+            p_final = curr_node['xml:id']
+            c1_final = this.define_graph(c1)
+            c2_final = this.define_graph(c2)
+            this.relations.append(relation(p_final, c1_final, 'Above'))
+            this.relations.append(relation(p_final, c2_final, 'Below'))
             return p_final
-        if curr_node.name == 'msub':
+        if curr_node.name in ['msqrt', 'mroot']:
+            p_final = curr_node['xml:id']
+            for c in curr_node.findChildren(recursive=False):
+                c_final = this.define_graph(c)
+                this.relations.append(relation(p_final, c_final, 'Inside'))
+            return p_final
+        if curr_node.name == 'mrow':
+            children = curr_node.findChildren(recursive=False)
+            p_final = this.define_graph(children[0])
+            last_c  = p_final
+            for c in children:
+                c_final = this.define_graph(c)
+                this.relations.append(relation(last_c, c_final, 'Right'))
+                last_c = c_final
+            return p_final
+        if curr_node.name in ['msub', 'munder']:
             p, c = curr_node.findChildren(recursive=False)
             p_final = this.define_graph(p)
             c_final = this.define_graph(c)
@@ -80,7 +107,7 @@ class relation_graph:
             c_final = this.define_graph(c)
             this.relations.append(relation(p_final, c_final, 'Superscript'))
             return p_final
-        if curr_node.name == 'msubsup':
+        if curr_node.name in ['msubsup', 'munderover']:
             p, c1, c2 = curr_node.findChildren(recursive=False)
             p_final = this.define_graph(p)
             c1_final = this.define_graph(c1)
@@ -122,7 +149,7 @@ def read_inkml(fname, include_relations=False):
         try:
             traces    = { t.id: t for t in [trace(i) for i in soup.find_all('trace')] }
             groups    = [group(i, traces) for i in soup.tracegroup.find_all('tracegroup')]
-            rel_graph = None #relation_graph(soup.annotationxml.math)
+            rel_graph = relation_graph(soup.annotationxml.math)
             return groups, traces, rel_graph
         except Exception as e:
             return None, None, None

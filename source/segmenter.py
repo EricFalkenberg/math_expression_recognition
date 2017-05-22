@@ -8,6 +8,8 @@ from config import file_handler_config as fconfig
 from config import segmenter_meta, arg_command, arg_data_type
 from file_handler import read_training_data, split_data
 from features import msscf, stroke_symbol_pair_features, preprocess_strokes
+from file_handler import read_inkml
+from file_handler import f_handler as ff_handler 
 
 from sklearn.ensemble import AdaBoostClassifier
 
@@ -31,7 +33,10 @@ class s_object:
         this.label    = label
         this.modifier = s_object.label_gen[label].next()
         this.strokes  = strokes
-    
+
+    def get_truth(this):
+        return '{0}_{1}'.format(this.label, this.modifier)    
+
     def __str__(this):
         return "O, {0}_{1}, {0}, 1.0, {2}\n".format(this.label, this.modifier, this.strokes)
 
@@ -85,6 +90,47 @@ class segmenter:
                     X.append(sample)
                     y.append(1 if to_join else 0)
         this.model.fit(X,y)
+
+    def evaluate_single(fname):
+        t, g, r = read_inkml(fname)
+        f_handler = ff_handler(t,g,r)
+        if not f_handler.is_malformed():
+            strokes   = sorted([v for k,v in f_handler.traces.items()], key=lambda x: x.id)
+            output    = [[strokes[0]]]
+            for s1, s2 in [[strokes[i],strokes[i+1]] for i in range(len(strokes)-1)]:
+                ## GET FEATURES
+                s1f, s2f           = preprocess_strokes([s1, s2]) 
+                shape_context      = msscf(s1f, s2f)
+                geometric_features = stroke_symbol_pair_features(s1f, s2f)
+                features   = extract_features_from_sample([s1f, s2f])
+                class_probs_join   = this.classifier.model.predict_proba(features)
+                features   = extract_features_from_sample([s1f, s2f])
+                class_probs_sep    = this.classifier.model.predict_proba(features)
+                sample = []
+                sample.extend(shape_context)
+                sample.extend(geometric_features)
+                sample.extend(class_probs_join[0].T)
+                sample.extend(class_probs_sep[0].T)
+                to_join = this.model.predict(sample)
+                if to_join:
+                    output[-1].append(s2)
+                else:
+                    output.append([s2])
+            groups = []
+            for group in output:
+                data_array = [i.data for i in group]   
+                ids = ", ".join([str(i.id) for i in group])
+                features   = extract_features_from_sample(data_array)
+                prediction = this.classifier.predict(features)
+                s_o = s_object(prediction, ids)
+                g_o = group(None, None, None, override=True)
+                g_o.id     = s_o.get_truth()
+                g_o.type   = s_o.type
+                g_o.truth  = s_o.get_truth()
+                g_o.traces = group 
+                groups.append(g_o)
+            return groups
+            
 
     def evaluate_model(this, out_name):
         try:
@@ -152,4 +198,5 @@ if __name__ == '__main__':
         s = segmenter(train_names, test_names, dataset, "classification/models/random_forest.model")
     elif args.command[0] == "test":
         s = segmenter(None, None, None, None, "models/adaboost_segmenter.model")
+        print "EVALUATING MODEL"
         s.evaluate_model("test_{0}".format(data_type))
